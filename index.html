@@ -1139,7 +1139,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   background-size:300% 100%;
   -webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;color:transparent;
-  animation:goldSweep 6s linear infinite;
+  animation:goldSweep 14s linear infinite;
   text-shadow:none;
   filter:drop-shadow(0 2px 10px rgba(0,0,0,.35)) drop-shadow(0 0 14px rgba(230,203,133,.28));
   padding-left:.3em;padding-right:.3em;margin-left:-.3em;margin-right:-.3em;
@@ -1149,7 +1149,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   background-size:300% 100%;
   -webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;color:transparent;
-  animation:goldSweep 7s linear infinite;
+  animation:goldSweep 16s linear infinite;
   padding-left:.25em;padding-right:.25em;margin-left:-.25em;margin-right:-.25em;
 }
 .section-paper h2 em,.section-surface h2 em,.section-bg h2 em{display:inline-block}
@@ -1181,8 +1181,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .bb-music .bb-rose-glow{animation-duration:2.6s}
 .bb-petal{position:absolute;z-index:2;left:44%;top:30%;width:11px;height:14px;opacity:0;
   background:radial-gradient(circle at 35% 30%,#e0314a,#b3001b 60%,#6e0011);
-  border-radius:70% 0 70% 0;animation:bbPetal 11s ease-in infinite}
-.bb-petal--b{left:52%;top:28%;width:9px;height:12px;animation-delay:5.5s}
+  border-radius:70% 0 70% 0;animation:bbPetal 26s ease-in infinite}
+.bb-petal--b{left:52%;top:28%;width:9px;height:12px;animation-delay:13s}
 @keyframes bbPetal{
   0%,58%{opacity:0;transform:translate(0,0) rotate(0)}
   62%{opacity:1}
@@ -1446,7 +1446,7 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none}
 
 <!-- ENVELOPE OPENING SEQUENCE -->
 <div id="envelope-screen" role="button" aria-label="Toca para abrir la invitación" tabindex="0">
-  <img id="env-image" src="envelope.png" alt="">
+  <img id="env-image" src="envelope.jpg" alt="">
   <video id="env-video" muted playsinline preload="auto">
     <source src="envelope.mp4" type="video/mp4">
   </video>
@@ -2142,6 +2142,7 @@ function launchInvitation(){
 
   let opened  = false;
   let flashed = false;
+  let failsafe = null;
 
   // Fade-in suave de la imagen del sobre
   gsap.fromTo(envImage,{opacity:0},{opacity:1,duration:1,ease:'power2.out',delay:.2});
@@ -2163,6 +2164,8 @@ function launchInvitation(){
     // Disparo del flash cerca del final + fallback 'ended'
     envVideo.addEventListener('timeupdate', onTimeUpdate);
     envVideo.addEventListener('ended', triggerFlash);
+    // Red de seguridad: si el video no carga o no reproduce, revelar igual
+    failsafe = setTimeout(triggerFlash, 11000);
   }
 
   function onTimeUpdate(){
@@ -2175,6 +2178,7 @@ function launchInvitation(){
   function triggerFlash(){
     if(flashed) return;
     flashed = true;
+    if(failsafe){ clearTimeout(failsafe); failsafe = null; }
 
     // Flash fade → 1 mientras el video termina
     gsap.to(envFlash,{
@@ -3057,7 +3061,7 @@ window.addEventListener('resize',()=>ScrollTrigger.refresh());
       return {
         x: Math.random()*W, y: top ? -10 - Math.random()*40 : Math.random()*H,
         r: .7 + Math.random()*(mobile ? 1.6 : 2.1),
-        vy: .25 + Math.random()*.55, sw: Math.random()*6.28, sws: .006 + Math.random()*.012,
+        vy: .11 + Math.random()*.24, sw: Math.random()*6.28, sws: .0026 + Math.random()*.0052,
         tw: Math.random()*6.28, star: Math.random() < .28, c: cols[(Math.random()*3)|0]
       };
     }
@@ -3083,12 +3087,12 @@ window.addEventListener('resize',()=>ScrollTrigger.refresh());
       if(!running) return;
       var dt = Math.min(3, (t - last) / 16.7 || 1); last = t;
       ctx.clearRect(0,0,W,H);
-      var speed = 1 + boost*.35;
+      var speed = 1 + boost*.20;
       for(var i=0;i<parts.length;i++){
         var p = parts[i];
         if(p.extra && !boost && p.y < 0) continue;
-        p.y += p.vy*speed*dt; p.sw += p.sws*dt; p.tw += .05*dt;
-        p.x += Math.sin(p.sw)*.35*dt;
+        p.y += p.vy*speed*dt; p.sw += p.sws*dt; p.tw += .022*dt;
+        p.x += Math.sin(p.sw)*.16*dt;
         if(p.y > H + 12){
           if(p.extra && !boost){ p.y = -20; continue; }
           var n = mk(true); n.extra = p.extra; parts[i] = p = n;
