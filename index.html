@@ -26,7 +26,7 @@
 <meta name="twitter:description" content="Nuestra boda · Sábado 7 de noviembre de 2026 · Apizaco, Tlaxcala">
 <meta name="twitter:image" content="https://boda-yenisei-y-juan-carlos.vercel.app/og-image.jpg">
 
-<link rel="preload" as="image" href="portada.jpg">
+<link rel="preload" as="image" href="foto4.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Pinyon+Script&family=Great+Vibes&family=Italiana&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -1243,6 +1243,174 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   .bb-shine-light,.hero-and,.date-num,.footer-names,.itinerary-sub,.countdown-sub,.hair-word span,.story-initials,h2 em{animation:none!important}
 }
 
+
+/* ============ FIX: recorte de letras en el hero ============
+   background-clip:text pinta el degradado SOLO dentro de la caja de padding.
+   Con Great Vibes / Pinyon Script (astas y rasgos muy fuera del em) y
+   line-height apretado, las mayusculas y los trazos quedaban cortados.
+   Solucion: aire vertical y horizontal en la caja + margen negativo para
+   que el layout no se mueva. */
+.bb-shine-light,.hero-and,.date-num,.footer-names,.date-h em{
+  padding-left:.34em;padding-right:.34em;
+  margin-left:-.34em;margin-right:-.34em;
+  padding-top:.24em;padding-bottom:.32em;
+  margin-top:-.24em;margin-bottom:-.32em;
+}
+.hero-name{line-height:1.18}
+.hero-name-p,.hero-name-l{
+  padding:.24em .36em .32em;
+  margin:-.24em -.36em -.32em;
+}
+.hero-name .hero-and{
+  line-height:1.3;
+  margin:10px auto 14px;
+  padding-top:.26em;padding-bottom:.34em;
+}
+/* El ampersand: bloque propio, centrado bajo "Yenisei" */
+.hero-name .hero-and{display:block;width:max-content;margin-left:auto;margin-right:auto;
+  font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:400;
+  font-size:clamp(50px,6.2vw,92px);letter-spacing:0}
+@media (max-width:720px){
+  .hero-name .hero-and{margin-top:6px;margin-bottom:10px}
+}
+
+/* ============ DRESS CODE (diseño fabiola-y-fernando, paleta Yenisei) ============ */
+.dress{text-align:center}
+.dress h2{font-size:clamp(40px,6vw,66px);margin-bottom:6px}
+.dc-divider{display:flex;align-items:center;justify-content:center;gap:14px;margin:6px auto 22px;max-width:320px;color:var(--gold)}
+.dc-rule{flex:1;height:1px;background:linear-gradient(to right,transparent,color-mix(in srgb,var(--gold) 65%,transparent),transparent)}
+.dc-rose{width:34px;height:34px;flex-shrink:0;opacity:.9}
+.dc-note{font-family:var(--serif);font-size:clamp(17px,2.2vw,20px);font-style:italic;font-weight:400;
+  color:var(--ink-soft);margin-bottom:40px}
+.dc-figures{display:flex;align-items:center;justify-content:center;gap:clamp(18px,4vw,34px);
+  margin:6px auto 34px;max-width:420px}
+.dc-fig{display:flex;flex-direction:column;align-items:center;gap:12px;flex:1;min-width:0}
+.dc-fig img{height:clamp(180px,34vw,236px);width:auto;max-width:100%;display:block;
+  filter:drop-shadow(0 8px 18px rgba(10,10,82,.22))}
+.dc-fig-label{font-family:var(--serif);font-size:clamp(18px,2.4vw,21px);font-style:italic;
+  letter-spacing:.02em;color:var(--accent)}
+.dc-fig-sub{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--ink-soft);margin-top:-6px;padding-left:.28em}
+.dc-sep-line{width:1px;align-self:stretch;min-height:150px;flex-shrink:0;
+  background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--gold) 55%,transparent) 18%,color-mix(in srgb,var(--gold) 55%,transparent) 82%,transparent)}
+.dc-avoid-block{margin-top:14px}
+.dc-avoid{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gold-deep);padding-left:.16em}
+.dc-swatches{display:inline-flex;gap:clamp(26px,6vw,44px);justify-content:center;align-items:flex-start;margin:20px auto 0}
+.dc-swatch{display:flex;flex-direction:column;align-items:center;gap:10px}
+.dc-swatch-dot{width:34px;height:34px;border-radius:50%;display:block;position:relative;
+  border:1.5px solid color-mix(in srgb,var(--accent-deep) 45%,transparent);
+  box-shadow:0 4px 14px rgba(10,10,82,.18), inset 0 0 0 1px rgba(255,255,255,.25)}
+.dc-swatch-dot::after{content:'';position:absolute;inset:-6px;border-radius:50%;
+  border:1px dashed color-mix(in srgb,var(--rose) 55%,transparent);pointer-events:none}
+.dc-swatch-n{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink-soft);padding-left:.22em}
+@media (max-width:480px){
+  .dc-figures{gap:14px}
+  .dc-sep-line{min-height:130px}
+}
+
+/* ============ MESA DE REGALOS — caja que se abre (diseño paola-e-ivan) ============ */
+.giftbox-stage{position:relative;margin:48px auto 0;max-width:560px;min-height:260px;display:flex;align-items:center;justify-content:center}
+.giftbox-holder{opacity:1;position:relative;z-index:1;text-align:center}
+.giftbox{position:relative;width:min(190px,52vw);cursor:pointer;background:none;border:none;padding:0;
+  transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.giftbox:hover{transform:translateY(-8px) scale(1.03)}
+.giftbox:focus-visible{outline:2px solid var(--gold-deep);outline-offset:10px;border-radius:6px}
+.giftbox.is-open{pointer-events:none}
+.giftbox svg{width:100%;height:auto;display:block;filter:drop-shadow(0 18px 34px rgba(10,10,82,.3))}
+.giftbox-lid{transform-origin:50% 100%;transition:transform .6s cubic-bezier(.34,1.4,.5,1),opacity .55s ease}
+.giftbox.is-open .giftbox-lid{transform:translateY(-52px) rotate(-14deg);opacity:0}
+.giftbox-cta{display:block;margin-top:22px;font-family:var(--italiana);font-size:12px;font-weight:600;
+  letter-spacing:.36em;text-transform:uppercase;padding-left:.36em;color:var(--gold-deep);
+  animation:giftPulse 2.6s ease-in-out infinite;transition:opacity .4s}
+@keyframes giftPulse{0%,100%{opacity:.6}50%{opacity:1}}
+.giftbox-cta.is-hidden{opacity:0;animation:none}
+#confetti-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+
+.gift-backdrop{position:fixed;top:0;right:0;bottom:0;left:0;z-index:900;height:100vh;height:100dvh;
+  background:rgba(10,10,82,.58);
+  backdrop-filter:blur(16px) saturate(1.05);-webkit-backdrop-filter:blur(16px) saturate(1.05);
+  opacity:0;pointer-events:none;transition:opacity .45s ease;
+  display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,40px);
+  -webkit-transform:translateZ(0);transform:translateZ(0)}
+.gift-backdrop.is-open{opacity:1;pointer-events:auto}
+body.gift-locked{overflow:hidden;overscroll-behavior:none}
+.gift-reveal{position:relative;width:100%;max-width:480px;max-height:calc(100dvh - 32px);overflow-y:auto;
+  background:#FBFCF2;border:1px solid color-mix(in srgb,var(--gold) 55%,transparent);
+  padding:clamp(34px,5vw,46px) 0 clamp(28px,4vw,36px);
+  box-shadow:0 34px 90px rgba(10,10,82,.45),inset 0 0 0 1px rgba(255,255,255,.5);
+  opacity:0;transform:translateY(26px) scale(.94);
+  transition:opacity .5s ease,transform .55s cubic-bezier(.2,.7,.2,1)}
+.gift-backdrop.is-open .gift-reveal{opacity:1;transform:none}
+.gift-reveal::before{content:"";position:absolute;inset:9px;border:1px solid color-mix(in srgb,var(--gold) 28%,transparent);pointer-events:none}
+.gift-reveal-eyebrow{font-family:var(--italiana);font-size:12px;font-weight:600;letter-spacing:.36em;
+  text-transform:uppercase;padding-left:.36em;color:var(--gold-deep);margin-bottom:6px;text-align:center}
+.gift-close{position:absolute;top:12px;right:12px;z-index:3;width:38px;height:38px;border-radius:50%;
+  border:1px solid color-mix(in srgb,var(--gold) 55%,transparent);background:rgba(251,252,242,.92);
+  color:var(--accent-deep);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:background .3s,color .3s,transform .3s;padding:0;
+  -webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.gift-close:hover{background:var(--accent-deep);color:#F8FAE9;transform:rotate(90deg)}
+.gift-close:focus-visible{outline:2px solid var(--gold-deep);outline-offset:3px}
+.gift-close svg{width:16px;height:16px}
+.gr-slide{padding:18px clamp(24px,5vw,40px) 4px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.gr-logo{height:48px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.gr-logo img{max-height:48px;max-width:210px;width:auto;height:auto;display:block}
+.gr-title{font-family:var(--display);font-size:clamp(22px,3vw,26px);color:var(--accent-deep);margin-bottom:10px}
+.gr-desc{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--ink-soft);line-height:1.75;margin-bottom:26px}
+.gr-desc b{font-weight:600;color:var(--accent-deep);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.gr-btn{display:inline-block;padding:15px 34px;border:1px solid var(--accent-deep);background:transparent;
+  font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.4em;text-transform:uppercase;
+  padding-left:calc(34px + .4em);color:var(--accent-deep);text-decoration:none;cursor:pointer;min-height:48px;
+  position:relative;overflow:hidden;z-index:0;transition:color .5s cubic-bezier(.2,.7,.2,1);
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.gr-btn::before{content:"";position:absolute;inset:0;background:var(--accent-deep);
+  transform:translateY(101%);transition:transform .5s cubic-bezier(.2,.7,.2,1);z-index:-1}
+.gr-btn:hover{color:#F8FAE9}
+.gr-btn:hover::before{transform:translateY(0)}
+
+/* ============ LLUVIA DE SOBRES (diseño jeffersson-y-vanessa) ============ */
+.env-zone{position:relative;margin:clamp(70px,11vh,120px) auto 0;padding:clamp(40px,7vw,64px) 0 10px;
+  max-width:640px;text-align:center;overflow:hidden}
+.env-zone::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:min(300px,70%);height:1px;
+  background:linear-gradient(to right,transparent,color-mix(in srgb,var(--gold) 70%,transparent),transparent)}
+.env-rain{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.env-rain-item{position:absolute;top:-46px;will-change:transform;opacity:0}
+.env-zone .env-stage{position:relative;z-index:1}
+.env-h2{font-size:clamp(32px,4.6vw,48px);margin:8px 0 4px}
+.env-interactive{display:flex;flex-direction:column;align-items:center;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;outline:none;border:none;background:none;
+  padding:0;margin:26px auto 0;opacity:0}
+.env-body{perspective:700px;position:relative;width:min(260px,74vw);aspect-ratio:260/200;
+  filter:drop-shadow(0 10px 26px rgba(10,10,82,.2))}
+.env-body svg.env-svg{width:100%;height:100%;display:block}
+.env-flap-wrap{position:absolute;top:23%;left:6.9%;width:86.2%;height:43%;transform-origin:top center;
+  transform-style:preserve-3d;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  transition:transform .65s cubic-bezier(.4,0,.2,1);pointer-events:none;z-index:2}
+.env-interactive.open .env-flap-wrap{transform:rotateX(-175deg)}
+.env-open-content{overflow:hidden;max-height:0;opacity:0;
+  transition:max-height .55s .3s ease,opacity .4s .38s ease;
+  display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 16px;text-align:center;pointer-events:none}
+.env-interactive.open .env-open-content{max-height:320px;opacity:1;pointer-events:auto;margin-top:20px}
+.env-mailbox-icon{width:42px;height:42px;color:var(--gold);margin-top:6px}
+.env-title{font-family:var(--script);font-size:clamp(28px,7vw,36px);color:var(--accent-deep);
+  line-height:1.4;padding:.1em .2em}
+.env-desc{font-family:var(--serif);font-size:16px;font-weight:400;font-style:italic;color:var(--ink-soft);
+  line-height:1.75;max-width:320px}
+.env-tap-hint{font-family:var(--italiana);font-size:12px;letter-spacing:.3em;text-transform:uppercase;
+  padding-left:.3em;color:var(--gold-deep);margin-top:18px;opacity:0;transition:opacity .5s ease;
+  position:relative;z-index:1}
+.env-tap-hint.show{opacity:.9;animation:envHintPulse 2.4s ease-in-out infinite}
+.env-interactive.open~.env-tap-hint{opacity:0!important;animation:none;pointer-events:none}
+@keyframes envHintPulse{0%,100%{opacity:.55}50%{opacity:1}}
+.env-body.landed{animation:envBreathe 3.6s ease-in-out infinite}
+@keyframes envBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+@media(prefers-reduced-motion:reduce){
+  .env-body.landed,.env-tap-hint.show,.giftbox-cta{animation:none!important}
+  .env-interactive{opacity:1!important}
+}
 </style>
 </head>
 <body>
@@ -1593,165 +1761,54 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <div class="seam" style="--from:var(--paper);--to:var(--bg)" aria-hidden="true"></div>
 
   <!-- DRESS CODE -->
-  <section class="section-bg dress">
+  <section class="section-bg dress" id="dresscode" aria-label="Código de vestimenta">
     <div class="container">
       <div class="eyebrow">Código de vestimenta</div>
-      <h2>Dress <em>Code</em></h2>
-      <div class="dress-sub">Formal &nbsp;·&nbsp; o &nbsp;·&nbsp; Semiformal</div>
+      <h2>Formal</h2>
 
-      <div class="dress-cols">
+      <div class="dc-divider" aria-hidden="true">
+        <span class="dc-rule"></span>
+        <svg class="dc-rose" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.1">
+          <circle cx="20" cy="20" r="4"/>
+          <circle cx="20" cy="20" r="2"/>
+          <path d="M12 20 Q15 13 20 16" stroke-linecap="round"/>
+          <path d="M28 20 Q25 13 20 16" stroke-linecap="round"/>
+          <path d="M12 20 Q15 27 20 24" stroke-linecap="round"/>
+          <path d="M28 20 Q25 27 20 24" stroke-linecap="round"/>
+        </svg>
+        <span class="dc-rule"></span>
+      </div>
 
-        <!-- ——— ELLOS ——— -->
-        <div class="dress-col">
-          <div class="dress-col-head">Ellos</div>
-          <div class="dress-figures">
+      <p class="dc-note">Acompáñanos vestido para la ocasión</p>
 
-            <!-- TRAJE / TUXEDO -->
-            <div class="garment-item">
-              <svg viewBox="0 0 80 200" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Silueta completa: saco + pantalón -->
-                <path d="M40 14 L35 21 C22 25 5 33 3 46 C1 65 3 86 6 104 L16 200 L37 200 C37 158 39 130 40 120 C41 130 43 158 43 200 L64 200 L74 104 C77 86 79 65 77 46 C75 33 58 25 45 21 Z" fill="#10107a" stroke="#0a0a52" stroke-width="1.5"/>
-                <!-- Línea de tiro del saco -->
-                <line x1="6" y1="104" x2="74" y2="104" stroke="#0a0a52" stroke-width="0.7" opacity="0.45"/>
-                <!-- Raya del pantalón -->
-                <line x1="37.5" y1="104" x2="37" y2="126" stroke="rgba(255,255,255,0.13)" stroke-width="0.7"/>
-                <line x1="42.5" y1="104" x2="43" y2="126" stroke="rgba(255,255,255,0.13)" stroke-width="0.7"/>
-                <!-- Camisa blanca visible entre solapas -->
-                <path d="M40 14 L35 21 L34 62 C36 84 38 96 40 99 C42 96 44 84 46 62 L45 21 Z" fill="#F8FAE9"/>
-                <!-- Puntas del cuello de camisa -->
-                <path d="M35 21 L37 28 L40 23" stroke="#D5D0C8" stroke-width="0.8" fill="none"/>
-                <path d="M45 21 L43 28 L40 23" stroke="#D5D0C8" stroke-width="0.8" fill="none"/>
-                <!-- Solapa izquierda (pico — estilo tuxedo) -->
-                <path d="M35 21 C22 24 8 31 5 43 L20 59 L34 47 Z" fill="#10107a" stroke="#0a0a52" stroke-width="1.4"/>
-                <line x1="34" y1="47" x2="20" y2="59" stroke="#0a0a52" stroke-width="1.1"/>
-                <!-- Solapa derecha -->
-                <path d="M45 21 C58 24 72 31 75 43 L60 59 L46 47 Z" fill="#10107a" stroke="#0a0a52" stroke-width="1.4"/>
-                <line x1="46" y1="47" x2="60" y2="59" stroke="#0a0a52" stroke-width="1.1"/>
-                <!-- Corbatín / bow tie -->
-                <path d="M39 18 L33 21 L39 24 Z" fill="#C9A24B" stroke="#8C6F2A" stroke-width="0.8"/>
-                <path d="M41 18 L47 21 L41 24 Z" fill="#C9A24B" stroke="#8C6F2A" stroke-width="0.8"/>
-                <ellipse cx="40" cy="21" rx="1.8" ry="2.5" fill="#C9A24B" stroke="#8C6F2A" stroke-width="0.8"/>
-                <!-- Botón del saco -->
-                <circle cx="40" cy="80" r="1.8" stroke="#0a0a52" stroke-width="1" fill="none"/>
-                <!-- Pañuelo de bolsillo -->
-                <path d="M60 46 L63 39 L68 42 L65 49" fill="#F8FAE9" stroke="#C9A24B" stroke-width="0.9"/>
-                <!-- Puños de camisa -->
-                <line x1="3.5" y1="90" x2="5.5" y2="100" stroke="rgba(255,255,255,0.22)" stroke-width="2.5"/>
-                <line x1="76.5" y1="90" x2="74.5" y2="100" stroke="rgba(255,255,255,0.22)" stroke-width="2.5"/>
-              </svg>
-              <span class="garment-label">Etiqueta</span>
-            </div>
-
-            <!-- SACO / BLAZER -->
-            <div class="garment-item">
-              <svg viewBox="0 0 80 200" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Silueta completa: blazer + pantalón -->
-                <path d="M40 14 L34 22 C21 26 5 35 3 48 C1 67 3 89 7 107 L17 200 L37 200 C37 158 39 132 40 122 C41 132 43 158 43 200 L63 200 L73 107 C77 89 79 67 77 48 C75 35 59 26 46 22 Z" fill="#10107a" stroke="#0a0a52" stroke-width="1.5"/>
-                <!-- Línea tiro del saco -->
-                <line x1="7" y1="107" x2="73" y2="107" stroke="#0a0a52" stroke-width="0.7" opacity="0.45"/>
-                <!-- Raya pantalón -->
-                <line x1="37.5" y1="107" x2="37" y2="128" stroke="rgba(255,255,255,0.13)" stroke-width="0.7"/>
-                <line x1="42.5" y1="107" x2="43" y2="128" stroke="rgba(255,255,255,0.13)" stroke-width="0.7"/>
-                <!-- Camisa blanca -->
-                <path d="M40 14 L34 22 L33 70 C35 90 37 104 40 107 C43 104 45 90 47 70 L46 22 Z" fill="#F8FAE9"/>
-                <!-- Puntas cuello camisa -->
-                <path d="M34 22 L36 30 L40 25" stroke="#CCC" stroke-width="0.8" fill="none"/>
-                <path d="M46 22 L44 30 L40 25" stroke="#CCC" stroke-width="0.8" fill="none"/>
-                <!-- Solapa izquierda (muesca — estilo blazer) -->
-                <path d="M34 22 C22 26 8 34 6 46 L22 62 L33 50 Z" fill="#10107a" stroke="#0a0a52" stroke-width="1.4"/>
-                <line x1="33" y1="50" x2="22" y2="62" stroke="#0a0a52" stroke-width="1.1"/>
-                <!-- Solapa derecha -->
-                <path d="M46 22 C58 26 72 34 74 46 L58 62 L47 50 Z" fill="#10107a" stroke="#0a0a52" stroke-width="1.4"/>
-                <line x1="47" y1="50" x2="58" y2="62" stroke="#0a0a52" stroke-width="1.1"/>
-                <!-- Corbata (dorada con rayas) -->
-                <path d="M38 24 L42 24 L44 76 L40 84 L36 76 Z" fill="#C9A24B" stroke="#8C6F2A" stroke-width="0.9"/>
-                <!-- Nudo de corbata -->
-                <path d="M37 25 Q40 22 43 25 Q42 30 40 28 Q38 30 37 25 Z" fill="#8C6F2A"/>
-                <!-- Rayas de corbata -->
-                <line x1="38.5" y1="36" x2="42" y2="33" stroke="rgba(255,255,255,0.28)" stroke-width="1.4"/>
-                <line x1="38" y1="50" x2="42" y2="47" stroke="rgba(255,255,255,0.28)" stroke-width="1.4"/>
-                <line x1="37.5" y1="64" x2="41.5" y2="61" stroke="rgba(255,255,255,0.28)" stroke-width="1.4"/>
-                <!-- 2 botones del blazer -->
-                <circle cx="40" cy="72" r="1.8" stroke="#0a0a52" stroke-width="1" fill="none"/>
-                <circle cx="40" cy="86" r="1.8" stroke="#0a0a52" stroke-width="1" fill="none"/>
-                <!-- Bolsillos laterales -->
-                <path d="M14 86 L14 92 L24 92 L24 86" stroke="#0a0a52" stroke-width="1" fill="none"/>
-                <path d="M66 86 L66 92 L56 92 L56 86" stroke="#0a0a52" stroke-width="1" fill="none"/>
-                <!-- Botones de manga (3 por manga) -->
-                <circle cx="5" cy="93" r="1" stroke="rgba(255,255,255,0.35)" stroke-width="0.8" fill="none"/>
-                <circle cx="5" cy="97" r="1" stroke="rgba(255,255,255,0.35)" stroke-width="0.8" fill="none"/>
-                <circle cx="75" cy="93" r="1" stroke="rgba(255,255,255,0.35)" stroke-width="0.8" fill="none"/>
-                <circle cx="75" cy="97" r="1" stroke="rgba(255,255,255,0.35)" stroke-width="0.8" fill="none"/>
-              </svg>
-              <span class="garment-label">Saco</span>
-            </div>
-
-          </div>
+      <div class="dc-figures">
+        <div class="dc-fig">
+          <img src="caballero.png" alt="Caballero, traje formal" width="300" height="610" decoding="async">
+          <span class="dc-fig-label">Caballeros</span>
+          <span class="dc-fig-sub">traje formal</span>
         </div>
 
-        <!-- ——— DIVISOR ——— -->
-        <div class="dress-vline" aria-hidden="true"></div>
+        <div class="dc-sep-line" aria-hidden="true"></div>
 
-        <!-- ——— ELLAS ——— -->
-        <div class="dress-col">
-          <div class="dress-col-head">Ellas</div>
-          <div class="dress-figures">
-
-            <!-- VESTIDO COCKTAIL (corto, A-line) -->
-            <div class="garment-item">
-              <svg viewBox="0 0 80 175" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Silueta completa: escote V, cuerpo ajustado, falda A-line -->
-                <path d="M40 26 L52 8 C55 14 57 36 57 66 C57 74 55 80 52 84 C58 96 64 122 66 168 L14 168 C16 122 22 96 28 84 C25 80 23 74 23 66 C23 36 25 14 28 8 Z" fill="#10107a" stroke="#0a0a52" stroke-width="1.5"/>
-                <!-- Tirantes finos -->
-                <line x1="28" y1="8" x2="24" y2="2" stroke="#0a0a52" stroke-width="1.2"/>
-                <line x1="52" y1="8" x2="56" y2="2" stroke="#0a0a52" stroke-width="1.2"/>
-                <!-- Escote en V -->
-                <path d="M28 8 Q40 24 52 8" stroke="#0a0a52" stroke-width="1.1" fill="none"/>
-                <!-- Costura de cintura -->
-                <path d="M23 66 C26 74 32 78 40 78 C48 78 54 74 57 66" stroke="rgba(255,255,255,0.2)" stroke-width="0.8" fill="none"/>
-                <!-- Pliegues de la falda (sutiles) -->
-                <path d="M33 84 C29 104 21 138 18 168" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
-                <path d="M47 84 C51 104 59 138 62 168" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
-                <!-- Dobladillo -->
-                <path d="M14 168 Q40 165 66 168" stroke="#0a0a52" stroke-width="0.9" fill="none"/>
-              </svg>
-              <span class="garment-label">Cocktail</span>
-            </div>
-
-            <!-- VESTIDO LARGO (gown, elegante) -->
-            <div class="garment-item">
-              <svg viewBox="0 0 80 220" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Silueta completa: escote V, cuerpo ceñido, falda larga A-line -->
-                <path d="M40 28 L52 10 C55 16 57 38 57 70 C57 78 55 84 52 88 C56 104 60 150 62 215 L18 215 C20 150 24 104 28 88 C25 84 23 78 23 70 C23 38 25 16 28 10 Z" fill="#10107a" stroke="#0a0a52" stroke-width="1.5"/>
-                <!-- Tirantes finos -->
-                <line x1="28" y1="10" x2="24" y2="4" stroke="#0a0a52" stroke-width="1.2"/>
-                <line x1="52" y1="10" x2="56" y2="4" stroke="#0a0a52" stroke-width="1.2"/>
-                <!-- Escote en V -->
-                <path d="M28 10 Q40 26 52 10" stroke="#0a0a52" stroke-width="1.1" fill="none"/>
-                <!-- Costura de cintura -->
-                <path d="M23 70 C26 78 32 82 40 82 C48 82 54 78 57 70" stroke="rgba(255,255,255,0.2)" stroke-width="0.8" fill="none"/>
-                <!-- Caída elegante de la falda (líneas sutiles) -->
-                <path d="M36 88 C34 120 31 165 30 215" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
-                <path d="M44 88 C46 120 49 165 50 215" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
-                <!-- Dobladillo -->
-                <path d="M18 215 Q40 212 62 215" stroke="#0a0a52" stroke-width="0.9" fill="none"/>
-              </svg>
-              <span class="garment-label">Vestido largo</span>
-            </div>
-
-          </div>
+        <div class="dc-fig">
+          <img src="dama.png" alt="Dama, vestido formal" width="248" height="604" decoding="async">
+          <span class="dc-fig-label">Damas</span>
+          <span class="dc-fig-sub">vestido largo</span>
         </div>
+      </div>
 
-      </div><!-- /.dress-cols -->
-
-      <div class="dress-note">Evita blanco &nbsp;·&nbsp; azul</div>
-      <div class="dress-note" style="text-transform:none;letter-spacing:.15em;font-size:12px;margin-bottom:20px;">Colores sugeridos</div>
-      <div class="dress-swatches">
-        <div class="swatch"><div class="swatch-c" style="background:linear-gradient(135deg,#D8CAB8,#D4C5B2)"></div><div class="swatch-n">Taupe</div></div>
-        <div class="swatch"><div class="swatch-c" style="background:linear-gradient(135deg,#333,#000000)"></div><div class="swatch-n">Negro</div></div>
-        <div class="swatch"><div class="swatch-c" style="background:linear-gradient(135deg,#5dada8,#4b948f)"></div><div class="swatch-n">Teal</div></div>
-        <div class="swatch"><div class="swatch-c" style="background:linear-gradient(135deg,#ffff77,#ffff00)"></div><div class="swatch-n">Amarillo</div></div>
-        <div class="swatch"><div class="swatch-c" style="background:linear-gradient(135deg,#66ffff,#00ffff)"></div><div class="swatch-n">Cyan</div></div>
+      <div class="dc-avoid-block">
+        <p class="dc-avoid">Por favor evitar estos colores</p>
+        <div class="dc-swatches">
+          <span class="dc-swatch">
+            <span class="dc-swatch-dot" style="background:#FFFFFF" aria-label="Blanco"></span>
+            <span class="dc-swatch-n">Blanco</span>
+          </span>
+          <span class="dc-swatch">
+            <span class="dc-swatch-dot" style="background:#0000ff" aria-label="Azul"></span>
+            <span class="dc-swatch-n">Azul</span>
+          </span>
+        </div>
       </div>
     </div>
   </section>
@@ -1804,7 +1861,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <div class="seam" style="--from:var(--paper);--to:var(--surface)" aria-hidden="true"></div>
 
   <!-- GIFTS -->
-  <section class="section-surface gifts">
+  <section class="section-surface gifts" id="gifts">
     <div class="container">
       <div class="gifts-head">
         <div class="eyebrow">Tu presencia es nuestro regalo</div>
@@ -1812,76 +1869,86 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
         <p class="gifts-sub">Si deseas obsequiarnos algo, hemos preparado estas opciones</p>
         <p class="bb-note"><span class="bb-note-orn" aria-hidden="true">✦</span>Además de la mesa de regalos, también se aceptan regalos adicionales o sobres.</p>
       </div>
-      <div class="gifts-grid">
-        <article class="gift-card">
-          <div class="gift-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
-              <path d="M3 6h2l2 11h11l2-8H7"/>
-              <circle cx="9" cy="20" r="1.5"/>
-              <circle cx="17" cy="20" r="1.5"/>
-            </svg>
-          </div>
-          <div class="gift-name">Liverpool</div>
-          <div class="gift-desc">Mesa de regalos<br>de Yenisei y Juan Carlos</div>
-          <a class="gift-btn" href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/52030957" target="_blank" rel="noopener">Ver lista</a>
-        </article>
-      </div>
 
-      <!-- Sobre interactivo: lluvia de sobres -->
-      <div style="margin:52px auto 0;display:flex;flex-direction:column;align-items:center;gap:0;">
-        <button class="env-interactive" aria-label="Sobre — toca para abrir" aria-expanded="false">
-          <div class="env-body">
-            <!-- SVG cuerpo del sobre -->
-            <svg class="env-svg" viewBox="0 0 260 200" preserveAspectRatio="none" aria-hidden="true">
+      <div class="giftbox-stage">
+        <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+        <div class="giftbox-holder">
+          <button class="giftbox" id="giftbox" type="button" aria-label="Abrir la mesa de regalos" aria-expanded="false" aria-controls="gift-reveal">
+            <svg viewBox="0 0 200 190" fill="none" aria-hidden="true">
               <defs>
-                <linearGradient id="yj-env-fill" x1="0" y1="1" x2="1" y2="0">
-                  <stop offset="0%" stop-color="#EAE6DC"/>
-                  <stop offset="100%" stop-color="#F8FAE9"/>
+                <linearGradient id="yjGbShade" x1="26" y1="72" x2="174" y2="176" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ffffff" stop-opacity=".16"/><stop offset="1" stop-color="#000000" stop-opacity=".24"/>
                 </linearGradient>
               </defs>
-              <!-- Cuerpo -->
-              <rect x="18" y="52" width="224" height="132" rx="10"
-                    fill="url(#yj-env-fill)" stroke="rgba(201,162,75,.35)" stroke-width="1.4"/>
-              <!-- V central (pliegue inferior) -->
-              <path d="M18 184 L130 110 L242 184" stroke="rgba(201,162,75,.3)" stroke-width="1" fill="none"/>
-              <!-- Líneas decorativas (lluvia dorada) -->
-              <line x1="90"  y1="30" x2="90"  y2="20" stroke="#C9A24B" stroke-width="1.3" stroke-linecap="round" opacity=".45"/>
-              <line x1="130" y1="24" x2="130" y2="14" stroke="#C9A24B" stroke-width="1.3" stroke-linecap="round" opacity=".6"/>
-              <line x1="170" y1="30" x2="170" y2="20" stroke="#C9A24B" stroke-width="1.3" stroke-linecap="round" opacity=".45"/>
-              <line x1="110" y1="18" x2="110" y2="10" stroke="#E6CB85" stroke-width="1"   stroke-linecap="round" opacity=".35"/>
-              <line x1="150" y1="18" x2="150" y2="10" stroke="#E6CB85" stroke-width="1"   stroke-linecap="round" opacity=".35"/>
-              <!-- Sello Y&J -->
-              <circle cx="130" cy="118" r="16" fill="rgba(201,162,75,.12)" stroke="rgba(201,162,75,.45)" stroke-width="1"/>
-              <text x="130" y="123" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#10107a" opacity=".8">Y&amp;J</text>
+              <rect x="26" y="72" width="148" height="104" rx="4" fill="#10107a"/>
+              <rect x="26" y="72" width="148" height="104" rx="4" fill="url(#yjGbShade)"/>
+              <rect x="88" y="72" width="24" height="104" fill="#C9A24B"/>
+              <rect x="26" y="112" width="148" height="15" fill="#C9A24B"/>
+              <rect x="26.7" y="72.7" width="146.6" height="102.6" rx="3.3" stroke="#8C6F2A" stroke-width="1.4"/>
+              <g class="giftbox-lid">
+                <rect x="16" y="54" width="168" height="26" rx="4" fill="#1a1a95"/>
+                <rect x="16.7" y="54.7" width="166.6" height="24.6" rx="3.3" stroke="#8C6F2A" stroke-width="1.4"/>
+                <rect x="88" y="54" width="24" height="26" fill="#C9A24B"/>
+                <path d="M100 54 C100 40 84 26 70 32 C58 37 62 52 78 54 Z" fill="#C9A24B" stroke="#8C6F2A" stroke-width="1.2"/>
+                <path d="M100 54 C100 40 116 26 130 32 C142 37 138 52 122 54 Z" fill="#C9A24B" stroke="#8C6F2A" stroke-width="1.2"/>
+                <circle cx="100" cy="52" r="8" fill="#E6CB85" stroke="#8C6F2A" stroke-width="1.2"/>
+              </g>
             </svg>
-            <!-- Solapa animable -->
-            <div class="env-flap-wrap" aria-hidden="true">
-              <svg viewBox="0 0 224 86" preserveAspectRatio="none" style="width:100%;height:100%">
+          </button>
+          <span class="giftbox-cta" id="giftbox-cta">Toca el regalo</span>
+        </div>
+      </div>
+
+      <!-- ---------- LLUVIA DE SOBRES ---------- -->
+      <div class="env-zone" id="env-zone">
+        <div class="env-rain" id="envRain" aria-hidden="true"></div>
+        <div class="env-stage">
+          <div class="eyebrow">Celebra con nosotros</div>
+          <h2 class="env-h2">Lluvia <em>de</em> sobres</h2>
+          <button class="env-interactive" id="envGift" type="button" aria-label="Sobre — toca para abrir" aria-expanded="false">
+            <div class="env-body" id="envGiftBody">
+              <svg class="env-svg" viewBox="0 0 260 200" preserveAspectRatio="none" aria-hidden="true">
                 <defs>
-                  <linearGradient id="yj-flap-fill" x1="0" y1="1" x2="1" y2="0">
-                    <stop offset="0%" stop-color="#E6CB85"/>
+                  <linearGradient id="yj-env-fill" x1="0" y1="1" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#EAE6DC"/>
                     <stop offset="100%" stop-color="#F8FAE9"/>
                   </linearGradient>
                 </defs>
-                <path d="M0 0 L112 86 L224 0 Z"
-                      fill="url(#yj-flap-fill)" stroke="rgba(201,162,75,.45)" stroke-width="1.5" stroke-linejoin="round"/>
+                <rect x="18" y="52" width="224" height="132" rx="10"
+                      fill="url(#yj-env-fill)" stroke="rgba(201,162,75,.45)" stroke-width="1.4"/>
+                <path d="M18 184 L130 110 L242 184" stroke="rgba(201,162,75,.3)" stroke-width="1" fill="none"/>
+                <circle cx="130" cy="120" r="19" fill="#b3001b"/>
+                <circle cx="130" cy="120" r="19" fill="none" stroke="#7d0013" stroke-width="1.6" opacity=".6"/>
+                <circle cx="130" cy="120" r="14" fill="none" stroke="#E6CB85" stroke-width="1" opacity=".9"/>
+                <text x="130" y="126" text-anchor="middle" font-family="'Pinyon Script',Georgia,serif" font-size="17" fill="#E6CB85">Y&amp;J</text>
               </svg>
+              <div class="env-flap-wrap" aria-hidden="true">
+                <svg viewBox="0 0 224 86" preserveAspectRatio="none" style="width:100%;height:100%;display:block">
+                  <defs>
+                    <linearGradient id="yj-flap-fill" x1="0" y1="1" x2="1" y2="0">
+                      <stop offset="0%" stop-color="#E6CB85"/>
+                      <stop offset="100%" stop-color="#F8FAE9"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0 0 L112 86 L224 0 Z"
+                        fill="url(#yj-flap-fill)" stroke="rgba(201,162,75,.5)" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
-          </div>
-          <!-- Contenido revelado al abrir -->
-          <div class="env-open-content" aria-live="polite">
-            <svg class="env-mailbox-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <rect x="8" y="22" width="36" height="24" rx="5"/>
-              <path d="M8 30 Q26 38 44 30"/>
-              <rect x="18" y="8" width="16" height="16" rx="2"/>
-              <path d="M18 8 Q26 3 34 8"/>
-              <rect x="20" y="28" width="12" height="2.5" rx="1.25" fill="currentColor" stroke="none" opacity=".4"/>
-            </svg>
-            <p class="env-title">Lluvia de sobres</p>
-            <p class="env-desc">El día de la celebración habrá un buzón<br>donde podrás depositar tu sobre con todo el cariño.</p>
-          </div>
-        </button>
-        <p class="env-tap-hint">Toca el sobre</p>
+            <div class="env-open-content" aria-live="polite">
+              <svg class="env-mailbox-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <rect x="8" y="22" width="36" height="24" rx="5"/>
+                <path d="M8 30 Q26 38 44 30"/>
+                <rect x="18" y="8" width="16" height="16" rx="2"/>
+                <path d="M18 8 Q26 3 34 8"/>
+                <rect x="20" y="28" width="12" height="2.5" rx="1.25" fill="currentColor" stroke="none" opacity=".4"/>
+              </svg>
+              <p class="env-title">Tu presencia es nuestro regalo</p>
+              <p class="env-desc">El día de la celebración habrá un buzón donde podrás depositar tu sobre con todo el cariño.</p>
+            </div>
+          </button>
+          <p class="env-tap-hint" id="envGiftHint">Toca el sobre</p>
+        </div>
       </div>
 
     </div>
@@ -1969,6 +2036,23 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   </footer>
 
 </div>
+
+<!-- Modal de la mesa de regalos: vive fuera de .wrap y de cualquier contain:paint,
+     que convertiria su position:fixed en relativo a la seccion -->
+<div class="gift-backdrop" id="gift-backdrop" role="dialog" aria-modal="true" aria-label="Mesa de regalos">
+        <div class="gift-reveal" id="gift-reveal">
+          <button class="gift-close" id="gift-close" type="button" aria-label="Cerrar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+          <div class="gift-reveal-eyebrow">Nuestra mesa</div>
+          <div class="gr-slide">
+            <div class="gr-logo"><img src="liverpool-logo.png" alt="Liverpool" width="508" height="121" decoding="async"></div>
+            <div class="gr-title">Mesa de regalos</div>
+            <div class="gr-desc">Número de evento <b>52030957</b><br>Envío directo a los novios</div>
+            <a class="gr-btn" href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/52030957" target="_blank" rel="noopener">Ver mesa</a>
+          </div>
+        </div>
+      </div>
 
 <!-- LIGHTBOX -->
 <div id="lightbox" aria-hidden="true" role="dialog">
@@ -2246,9 +2330,9 @@ gsap.fromTo('.countdown .eyebrow, .countdown h2, .countdown-sub',{opacity:0,y:14
 })();
 
 // ------ DRESS ------
-gsap.fromTo('.swatch',{opacity:0,scale:.4,y:30},{opacity:1,scale:1,y:0,duration:1.1,stagger:.1,ease:'elastic.out(1,.6)',scrollTrigger:{trigger:'.dress-swatches',start:'top 82%'}});
-gsap.fromTo('.dress .eyebrow, .dress h2, .dress-sub, .dress-col-head, .dress-note',{opacity:0,y:14},{opacity:1,y:0,duration:.9,stagger:.08,scrollTrigger:{trigger:'.dress',start:'top 78%'}});
-gsap.fromTo('.garment-item',{opacity:0,y:18},{opacity:1,y:0,duration:.7,stagger:.09,ease:'power2.out',scrollTrigger:{trigger:'.dress-cols',start:'top 82%'}});
+gsap.fromTo('.dress .eyebrow, .dress h2, .dc-divider, .dc-note',{opacity:0,y:14},{opacity:1,y:0,duration:.9,stagger:.08,immediateRender:false,scrollTrigger:{trigger:'.dress',start:'top 78%'}});
+gsap.fromTo('.dc-fig',{opacity:0,y:24},{opacity:1,y:0,duration:.9,stagger:.14,ease:'power3.out',immediateRender:false,scrollTrigger:{trigger:'.dc-figures',start:'top 85%'}});
+gsap.fromTo('.dc-avoid, .dc-swatch',{opacity:0,scale:.5,y:22},{opacity:1,scale:1,y:0,duration:1,stagger:.12,ease:'back.out(1.7)',immediateRender:false,scrollTrigger:{trigger:'.dc-avoid-block',start:'top 88%'}});
 
 // ------ GALERÍA — Rueda 3D arrastrable con inercia (estilo nelvi-yessica) ------
 (function initWheel(){
@@ -2399,21 +2483,168 @@ gsap.to(kidsPaths,{strokeDashoffset:0,duration:2,stagger:.25,ease:'power2.inOut'
 gsap.fromTo('.kids-policy .eyebrow, .kids-policy h2, .kids-text',{opacity:0,y:18},{opacity:1,y:0,duration:1,stagger:.12,scrollTrigger:{trigger:'.kids-policy',start:'top 78%'}});
 
 // ------ GIFTS ------
-gsap.fromTo('.gifts-head > *',{opacity:0,y:18},{opacity:1,y:0,duration:1,stagger:.1,scrollTrigger:{trigger:'.gifts-head',start:'top 80%'}});
-gsap.fromTo('.gift-card',{opacity:0,y:60,rotateY:-15,scale:.95},{opacity:1,y:0,rotateY:0,scale:1,duration:1.2,stagger:.15,ease:'power4.out',scrollTrigger:{trigger:'.gifts-grid',start:'top 82%'}});
-// Sobre interactivo (lluvia de sobres)
+gsap.fromTo('.gifts-head > *',{opacity:0,y:18},{opacity:1,y:0,duration:1,stagger:.1,immediateRender:false,scrollTrigger:{trigger:'.gifts-head',start:'top 80%'}});
+
+/* ---- Mesa de regalos: la caja se abre y expande la card de Liverpool ---- */
 (function(){
-  var btn = document.querySelector('.env-interactive');
-  if(!btn) return;
-  btn.addEventListener('click', function(){
-    var isOpen = btn.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  var box    = document.getElementById('giftbox');
+  var cta    = document.getElementById('giftbox-cta');
+  var back   = document.getElementById('gift-backdrop');
+  var closeB = document.getElementById('gift-close');
+  var canvas = document.getElementById('confetti-canvas');
+  if(!box || !back) return;
+
+  /* --- Confeti dorado/navy/vino: burst corto al abrir --- */
+  var ctx = canvas ? canvas.getContext('2d') : null;
+  var parts = [], raf = 0, COLORS = ['#C9A24B','#E6CB85','#10107a','#b3001b','#F8FAE9'];
+  function sizeCanvas(){
+    if(!canvas) return;
+    var r = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, r.width); canvas.height = Math.max(1, r.height);
+  }
+  function burst(){
+    if(!ctx) return;
+    sizeCanvas();
+    var cx = canvas.width/2, cy = canvas.height/2;
+    parts = [];
+    for(var i=0;i<90;i++){
+      var ang = Math.random()*Math.PI*2, sp = 2.2 + Math.random()*5.4;
+      parts.push({x:cx,y:cy,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp-2.4,
+        w:4+Math.random()*5,h:6+Math.random()*7,rot:Math.random()*Math.PI,
+        vr:(Math.random()-.5)*.3,c:COLORS[(Math.random()*COLORS.length)|0],life:1});
+    }
+    if(raf) cancelAnimationFrame(raf);
+    tick();
+  }
+  function tick(){
+    if(!ctx) return;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    var alive = 0;
+    for(var i=0;i<parts.length;i++){
+      var p = parts[i];
+      if(p.life <= 0) continue;
+      alive++;
+      p.vy += .16; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life -= .011;
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, p.life);
+      ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+      ctx.fillStyle = p.c;
+      ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+      ctx.restore();
+    }
+    if(alive) raf = requestAnimationFrame(tick);
+    else { ctx.clearRect(0,0,canvas.width,canvas.height); raf = 0; }
+  }
+
+  var scrollY = 0;
+  function open(){
+    if(back.classList.contains('is-open')) return;
+    box.classList.add('is-open');
+    box.setAttribute('aria-expanded','true');
+    if(cta) cta.classList.add('is-hidden');
+    burst();
+    scrollY = window.scrollY;
+    setTimeout(function(){
+      back.classList.add('is-open');
+      document.body.classList.add('gift-locked');
+      if(closeB) closeB.focus();
+    }, 330);
+  }
+  function close(){
+    back.classList.remove('is-open');
+    document.body.classList.remove('gift-locked');
+    box.classList.remove('is-open');
+    box.setAttribute('aria-expanded','false');
+    if(cta) cta.classList.remove('is-hidden');
+    box.focus();
+  }
+  box.addEventListener('click', open);
+  if(closeB) closeB.addEventListener('click', close);
+  back.addEventListener('click', function(e){ if(e.target === back) close(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && back.classList.contains('is-open')) close();
   });
-  btn.addEventListener('touchstart', function(e){
+  window.addEventListener('resize', sizeCanvas);
+})();
+
+/* ---- Lluvia de sobres: llueve hasta que la seccion se centra y aterriza uno ---- */
+(function(){
+  var zone = document.getElementById('env-zone'),
+      rain = document.getElementById('envRain'),
+      btn  = document.getElementById('envGift'),
+      body = document.getElementById('envGiftBody'),
+      hint = document.getElementById('envGiftHint');
+  if(!zone || !rain || !btn) return;
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var raining = true, landed = false, spawnCall = null, alive = 0, MAX_ALIVE = 16;
+
+  function makeEnvelope(){
+    if(alive >= MAX_ALIVE) return;
+    alive++;
+    var el = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    el.setAttribute('viewBox','0 0 34 24');
+    el.setAttribute('class','env-rain-item');
+    var w = 15 + Math.random()*15;
+    el.style.width = w + 'px'; el.style.height = (w*24/34) + 'px';
+    el.style.left = (Math.random()*100) + '%';
+    el.innerHTML = '<rect x="1" y="1" width="32" height="22" rx="2.5" fill="#F8FAE9" stroke="#C9A24B" stroke-width="1.2"/>' +
+                   '<path d="M1 1 L17 13 L33 1" fill="none" stroke="#C9A24B" stroke-width="1.2" stroke-linejoin="round"/>';
+    rain.appendChild(el);
+    var H = zone.offsetHeight + 80, dur = 5 + Math.random()*4;
+    function kill(){ if(el.parentNode){ el.remove(); alive--; } }
+    gsap.timeline({onComplete:kill})
+      .fromTo(el,{y:-46,x:0,rotation:(Math.random()-.5)*50,opacity:0},
+                 {y:H,x:(Math.random()-.5)*70,rotation:(Math.random()-.5)*160,duration:dur,ease:'none'},0)
+      .fromTo(el,{opacity:0},{opacity:.8,duration:dur*.18,ease:'power1.out'},0)
+      .to(el,{opacity:0,duration:dur*.25,ease:'power1.in'},dur*.75);
+  }
+  function scheduleSpawn(){
+    spawnCall = gsap.delayedCall(.52, function(){
+      if(!raining) return;
+      makeEnvelope(); scheduleSpawn();
+    });
+  }
+  function stopRain(){
+    raining = false;
+    if(spawnCall) spawnCall.kill();
+    gsap.to(rain,{opacity:0,duration:1.1,ease:'power2.out',
+      onComplete:function(){ rain.innerHTML=''; alive=0; }});
+  }
+  function land(){
+    if(landed) return; landed = true;
+    stopRain();
+    gsap.fromTo(btn,{opacity:0,y:-150,rotation:-12,scale:.82},
+      {opacity:1,y:0,rotation:0,scale:1,duration:1.15,ease:'back.out(1.5)',immediateRender:false,
+       onComplete:function(){
+         if(body) body.classList.add('landed');
+         if(hint) hint.classList.add('show');
+       }});
+  }
+
+  if(reduce){
+    /* Sin animacion: el sobre debe verse igual */
+    gsap.set(btn,{opacity:1});
+    landed = true; raining = false;
+    if(hint) hint.classList.add('show');
+  }else{
+    for(var i=0;i<6;i++) gsap.delayedCall(i*.26, makeEnvelope);
+    scheduleSpawn();
+    /* 'top 75%' y no 'center center': el reveal generico desplaza 28px las
+       secciones aun no visibles y un umbral exacto nunca se alcanza. */
+    ScrollTrigger.create({trigger:zone,start:'top 75%',once:true,onEnter:land,onEnterBack:land});
+    /* Red de seguridad: si el ScrollTrigger no dispara (preview/IO), aterriza igual */
+    gsap.delayedCall(4.5, land);
+  }
+
+  btn.addEventListener('click', function(e){
     e.preventDefault();
-    var isOpen = btn.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  }, {passive:false});
+    if(!landed) return;
+    var open = btn.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if(open && body) body.classList.remove('landed');
+    if(window.ScrollTrigger) ScrollTrigger.refresh();
+  });
 })();
 
 // ------ QR scan line ------
