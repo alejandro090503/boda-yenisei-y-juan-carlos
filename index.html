@@ -441,17 +441,18 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 
 /* ============ HISTORIA ============ */
 .story{max-width:860px;margin:0 auto;text-align:center}
-.story-ornament{display:block;margin:0 auto 32px;width:100px;height:auto;opacity:.6}
-.story h2{font-size:clamp(38px,5.5vw,64px);margin-bottom:56px}
+.story-ornament{display:block;margin:0 auto 22px;width:100px;height:auto;opacity:.6}
+.story h2{font-size:clamp(38px,5.5vw,64px);margin-bottom:34px}
 .story-body{
   font-family:var(--serif);font-size:clamp(18px,2vw,21px);font-weight:400;
-  line-height:1.85;color:var(--ink);margin-bottom:40px;
+  line-height:1.8;color:var(--ink);margin-bottom:12px;max-width:720px;margin-left:auto;margin-right:auto;
 }
-.story-body p{margin-bottom:28px}
+.story-body p{margin-bottom:20px}
+.story-body p:last-child{margin-bottom:0}
 .story-body p:first-child{text-align:left}
 .story-initials{
-  font-family:var(--script);font-size:96px;
-  color:var(--gold);margin-top:56px;line-height:1;
+  font-family:var(--script);font-size:82px;
+  color:var(--gold);margin-top:28px;line-height:1;
   display:inline-block;position:relative;
 }
 .story-initials::before,.story-initials::after{
@@ -623,19 +624,18 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 .mirror-ask{font-family:var(--script);font-size:clamp(30px,6.4vw,44px);line-height:1;color:var(--gold);
   margin:0 0 14px;opacity:.92;animation:mirrorAsk 5.6s ease-in-out infinite}
 @keyframes mirrorAsk{0%,100%{opacity:.58}50%{opacity:1;text-shadow:0 0 24px rgba(201,162,75,.45)}}
-.mirror-hit{position:relative;display:block;padding:16px 28px 24px;border:0;background:none;
+.mirror-hit{position:relative;display:block;padding:6px 8px 12px;border:0;background:none;
   cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:pan-y;border-radius:28px}
 .mirror-hit:focus-visible{outline:none;box-shadow:0 0 0 2px rgba(201,162,75,.85)}
-.mirror-body{position:relative;width:clamp(252px,66vw,344px);margin:0 auto;
-  animation:mirrorFloat 8s ease-in-out infinite}
-@keyframes mirrorFloat{0%,100%{transform:translateY(0) rotate(-.7deg)}50%{transform:translateY(-10px) rotate(.7deg)}}
-.mirror-frame{position:relative;z-index:3;display:block;width:100%;height:auto;pointer-events:none;
-  filter:drop-shadow(0 22px 36px rgba(10,10,82,.30))}
-.mirror-glass{position:absolute;z-index:4;left:31.15%;top:12.34%;width:57.06%;height:39.64%;
-  overflow:hidden;background:#cfd6e2;
-  -webkit-mask-image:url('espejo-cristal.png?v=1');mask-image:url('espejo-cristal.png?v=1');
-  -webkit-mask-size:100% 100%;mask-size:100% 100%;
-  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.mirror-body{position:relative;width:clamp(312px,92vw,452px);margin:0 auto;
+  animation:mirrorFloat 9s ease-in-out infinite}
+@keyframes mirrorFloat{0%,100%{transform:translateY(0) rotate(-.45deg)}50%{transform:translateY(-9px) rotate(.45deg)}}
+.mirror-frame{position:relative;z-index:4;display:block;width:100%;height:auto;pointer-events:none;
+  filter:drop-shadow(0 24px 40px rgba(10,10,82,.34))}
+/* el cristal es el hueco ovalado del marco: la foto manda */
+.mirror-glass{position:absolute;z-index:2;left:13.84%;top:20.48%;width:72.33%;height:63.78%;
+  overflow:hidden;border-radius:50%;background:#cfd6e2;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.35),inset 0 14px 28px rgba(10,10,82,.22)}
 .m-photos{position:absolute;inset:0}
 .m-photos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%}
 .m-tint{position:absolute;inset:0;pointer-events:none;
@@ -671,8 +671,8 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 .mirror-hint{font-family:var(--serif);font-style:italic;font-size:14px;letter-spacing:2.6px;
   color:var(--accent);text-align:center;margin-top:16px;opacity:.72}
 @media (max-width:420px){
-  .mirror-hit{padding:14px 18px 20px}
-  .mirror-body{width:min(252px,72vw)}
+  .mirror-hit{padding:4px 2px 10px}
+  .mirror-body{width:min(336px,94vw)}
 }
 @media (prefers-reduced-motion:reduce){
   .mirror-body,.m-sheen,.mirror-ask{animation:none}
@@ -1049,103 +1049,79 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 #lightbox-close:hover{background:rgba(15,31,63,.8);border-color:var(--gold-soft);transform:scale(1.08)}
 
 /* ============ MUSIC PLAYER (flotante) — estilo samantha-alexander ============ */
+/* ===== BOTON DE MUSICA — la rosa encantada bajo la campana ===== */
 .vinyl-btn{
   position:fixed;bottom:20px;right:20px;z-index:50;
-  width:72px;height:72px;border-radius:50%;padding:0;
+  width:72px;height:88px;border-radius:40px;padding:0;
   border:none;cursor:pointer;background:transparent;
   opacity:0;transform:scale(.6);pointer-events:none;
+  -webkit-tap-highlight-color:transparent;
   transition:transform .35s cubic-bezier(.2,.7,.2,1);
-  box-shadow:0 4px 18px rgba(0,0,0,.45),0 0 0 1px rgba(201,162,75,.18);
 }
 .vinyl-btn.is-ready{opacity:1;transform:scale(1);pointer-events:auto}
-.vinyl-btn:hover{transform:scale(1.1)}
-.vinyl-spin{
-  width:100%;height:100%;border-radius:50%;position:relative;
-  transition:none;
+.vinyl-btn:hover{transform:scale(1.07)}
+.vinyl-btn:focus-visible{outline:none}
+.vinyl-btn:focus-visible .rose-pedestal{box-shadow:0 0 0 2px var(--gold),0 8px 20px rgba(0,0,0,.45)}
+.rose-pedestal{
+  position:absolute;inset:0;border-radius:40px;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 18%,#17174f 0%,#0a0a52 52%,#070736 100%);
+  box-shadow:0 8px 22px rgba(0,0,0,.45),inset 0 0 0 1px rgba(201,162,75,.4);
 }
-.vinyl-btn.is-playing .vinyl-spin{animation:vinylSpin 1.8s linear infinite}
-@keyframes vinylSpin{to{transform:rotate(360deg)}}
-.vinyl-disc{width:100%;height:100%;border-radius:50%;overflow:hidden;position:relative;
-  background:
-    radial-gradient(circle,#0A0F26 4%,transparent 4.5%),
-    radial-gradient(circle,#E6CB85 0%,#C9A24B 17%,#8C6F2A 19%,transparent 19.5%),
-    repeating-radial-gradient(circle,
-      transparent 20%,rgba(255,255,255,.055) 20.8%,transparent 21.5%,
-      transparent 24%,rgba(255,255,255,.04) 24.8%,transparent 25.5%,
-      transparent 28%,rgba(255,255,255,.055) 28.8%,transparent 29.5%,
-      transparent 32%,rgba(255,255,255,.04) 32.8%,transparent 33.5%,
-      transparent 36%,rgba(255,255,255,.055) 36.8%,transparent 37.5%,
-      transparent 40%,rgba(255,255,255,.04) 40.8%,transparent 41.5%,
-      transparent 44%,rgba(255,255,255,.055) 44.8%,transparent 45.5%,
-      transparent 48%,rgba(255,255,255,.04) 48.8%,transparent 49.5%,
-      transparent 52%,rgba(255,255,255,.055) 52.8%,transparent 53.5%,
-      transparent 56%,rgba(255,255,255,.04) 56.8%,transparent 57.5%,
-      transparent 60%,rgba(255,255,255,.055) 60.8%,transparent 61.5%,
-      transparent 64%,rgba(255,255,255,.04) 64.8%,transparent 65.5%,
-      transparent 68%,rgba(255,255,255,.055) 68.8%,transparent 69.5%,
-      transparent 72%,rgba(255,255,255,.04) 72.8%,transparent 73.5%,
-      transparent 76%,rgba(255,255,255,.055) 76.8%,transparent 77.5%,
-      transparent 80%,rgba(255,255,255,.04) 80.8%,transparent 81.5%,
-      transparent 84%,rgba(255,255,255,.055) 84.8%,transparent 85.5%,
-      transparent 88%,rgba(255,255,255,.04) 88.8%,transparent 89.5%,
-      transparent 92%,rgba(255,255,255,.055) 92.8%,transparent 93.5%,
-      transparent 96%,rgba(255,255,255,.04) 96.8%,transparent 97.5%
-    ),
-    radial-gradient(circle,#0A0F26 0%,#0a0a52 60%,#0A0F26 100%);
-  box-shadow:inset 0 0 8px rgba(0,0,0,.4);
+.rose-halo{
+  position:absolute;left:50%;top:44%;width:112%;aspect-ratio:1;transform:translate(-50%,-50%);
+  border-radius:50%;pointer-events:none;opacity:.42;
+  background:radial-gradient(circle,rgba(230,203,133,.65) 0%,rgba(201,162,75,.26) 38%,transparent 68%);
+  transition:opacity .5s ease;
 }
-.vinyl-sheen{
-  position:absolute;inset:0;border-radius:50%;
-  background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,.09) 42%,rgba(255,255,255,.15) 48%,rgba(255,255,255,.09) 54%,transparent 66%);
-  pointer-events:none;
+.vinyl-btn.is-playing .rose-halo{opacity:1;animation:roseGlow 2.8s ease-in-out infinite}
+@keyframes roseGlow{0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(.94)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}}
+.rose-cloche{
+  position:absolute;left:50%;top:5px;transform:translateX(-50%);
+  width:56px;height:70px;object-fit:contain;object-position:center top;
+  pointer-events:none;z-index:2;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));
 }
-.vinyl-label-text{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  font-family:var(--script);font-size:11px;color:#0A0F26;
-  text-align:center;line-height:1.1;opacity:.75;
-  pointer-events:none;width:26px;
+.vinyl-btn.is-playing .rose-cloche{animation:roseBreath 4.6s ease-in-out infinite}
+@keyframes roseBreath{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.045)}}
+.rose-sheen{
+  position:absolute;inset:0;border-radius:40px;pointer-events:none;z-index:3;
+  background:linear-gradient(128deg,transparent 34%,rgba(255,255,255,.16) 46%,transparent 58%);
 }
-.vinyl-label-text small{font-family:var(--sans);font-size:5px;letter-spacing:.15em;display:block;margin-top:1px;opacity:.6}
-.vinyl-hole{
-  position:absolute;top:50%;left:50%;width:6px;height:6px;
-  transform:translate(-50%,-50%);border-radius:50%;
-  background:#0A0F26;
-  box-shadow:0 0 0 1.5px rgba(201,162,75,.45);
+/* petalo que cae solo cuando suena */
+.rose-petal{
+  position:absolute;left:52%;top:34%;width:7px;height:9px;z-index:3;opacity:0;
+  border-radius:60% 0 60% 0;background:linear-gradient(140deg,#d64a4a,#8f1420);
+  box-shadow:0 0 5px rgba(214,74,74,.55);pointer-events:none;
 }
-.vinyl-icons{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:18px;height:18px;pointer-events:none;z-index:2;
+.vinyl-btn.is-playing .rose-petal{animation:rosePetal 7s ease-in infinite}
+.vinyl-btn.is-playing .rose-petal.p2{animation-delay:3.4s;left:44%;top:30%}
+@keyframes rosePetal{
+  0%{opacity:0;transform:translate(0,0) rotate(0)}
+  8%{opacity:.95}
+  60%{opacity:.8;transform:translate(-5px,22px) rotate(130deg)}
+  78%{opacity:0;transform:translate(2px,33px) rotate(210deg)}
+  100%{opacity:0;transform:translate(2px,33px) rotate(210deg)}
 }
-.vinyl-icons svg{width:100%;height:100%;display:block}
-.vinyl-icon-pause{display:none}
-.vinyl-btn.is-playing .vinyl-icon-play{display:none}
-.vinyl-btn.is-playing .vinyl-icon-pause{display:block}
+/* indicador play / pausa */
+.rose-state{
+  position:absolute;right:5px;bottom:5px;width:20px;height:20px;border-radius:50%;z-index:4;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(10,10,82,.9);box-shadow:0 0 0 1px rgba(201,162,75,.65);
+}
+.rose-state svg{width:9px;height:9px;display:block;fill:#E6CB85}
+.rose-state .rose-ico-pause{display:none}
+.vinyl-btn.is-playing .rose-state .rose-ico-play{display:none}
+.vinyl-btn.is-playing .rose-state .rose-ico-pause{display:block}
 .vinyl-btn::after{
-  content:"";position:absolute;inset:-5px;border-radius:50%;
-  border:1px solid var(--gold);opacity:.3;
-  animation:vinylPulse 3s ease-in-out infinite;
+  content:"";position:absolute;inset:-4px;border-radius:44px;
+  border:1px solid var(--gold);opacity:.28;pointer-events:none;
+  animation:vinylPulse 3.4s ease-in-out infinite;
 }
-.vinyl-btn.is-playing::after{animation-duration:1.6s}
-@keyframes vinylPulse{0%,100%{transform:scale(1);opacity:.3}50%{transform:scale(1.12);opacity:.05}}
-.vinyl-tonearm{
-  position:absolute;top:-4px;right:-2px;width:24px;height:34px;
-  transform-origin:top right;transform:rotate(-28deg);
-  transition:transform .6s cubic-bezier(.2,.7,.2,1);pointer-events:none;z-index:1;
-}
-.vinyl-btn.is-playing .vinyl-tonearm{transform:rotate(-12deg)}
-.vinyl-tonearm-line{
-  position:absolute;top:2px;right:4px;width:2px;height:28px;
-  background:linear-gradient(to bottom,#8C6F2A,#C9A24B 40%,#8C6F2A);
-  border-radius:1px;transform:rotate(-5deg);transform-origin:top center;
-}
-.vinyl-tonearm-head{
-  position:absolute;bottom:0;right:2px;width:5px;height:6px;
-  background:#C9A24B;border-radius:0 0 2px 2px;
-}
-.vinyl-tonearm-pivot{
-  position:absolute;top:0;right:2px;width:7px;height:7px;
-  background:radial-gradient(circle,#E6CB85,#8C6F2A);border-radius:50%;
-  box-shadow:0 1px 3px rgba(0,0,0,.3);
+.vinyl-btn.is-playing::after{animation-duration:2.2s}
+@keyframes vinylPulse{0%,100%{transform:scale(1);opacity:.28}50%{transform:scale(1.07);opacity:.05}}
+@media (prefers-reduced-motion:reduce){
+  .vinyl-btn::after,.vinyl-btn.is-playing .rose-halo,
+  .vinyl-btn.is-playing .rose-cloche,.vinyl-btn.is-playing .rose-petal{animation:none}
+  .rose-petal{opacity:0}
 }
 
 /* ===================== LA BELLA Y LA BESTIA · capa de diseño ===================== */
@@ -1229,7 +1205,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .itv3-sub{font-family:var(--serif);font-style:italic;font-weight:500;font-size:17px;color:#3d3d70;opacity:1;letter-spacing:.02em;margin-top:6px}
 
 /* Poses de fotos */
-.bb-poses{display:flex;justify-content:center;align-items:center;margin:44px auto 34px;max-width:620px;padding:0 6px}
+.bb-poses{display:flex;justify-content:center;align-items:center;margin:34px auto 22px;max-width:620px;padding:0 6px}
 .bb-pose{flex:0 1 33%;margin:0 -10px;padding:7px;border-radius:6px;background:#fff;
   box-shadow:0 0 0 1px rgba(201,162,75,.65),0 0 0 4px #fff,0 0 0 5px rgba(201,162,75,.45),0 16px 30px rgba(10,10,82,.18);
   transform:rotate(var(--r));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
@@ -1320,8 +1296,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   text-transform:uppercase;color:var(--gold-deep);padding-left:.16em}
 .dc-swatches{display:inline-flex;gap:clamp(26px,6vw,44px);justify-content:center;align-items:flex-start;margin:20px auto 0}
 .dc-swatch{display:flex;flex-direction:column;align-items:center;gap:10px}
-.dc-swatch-dot{width:34px;height:34px;border-radius:50%;display:block;position:relative;
-  border:1.5px solid color-mix(in srgb,var(--accent-deep) 45%,transparent);
+.dc-swatch-dot{width:38px;height:38px;border-radius:50%;display:block;position:relative;
+  border:1.5px solid var(--gold-deep);
   box-shadow:0 4px 14px rgba(10,10,82,.18), inset 0 0 0 1px rgba(255,255,255,.25)}
 .dc-swatch-dot::after{content:'';position:absolute;inset:-6px;border-radius:50%;
   border:1px dashed color-mix(in srgb,var(--rose) 55%,transparent);pointer-events:none}
@@ -1447,23 +1423,18 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none}
   <source src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/audio/boda-yenisei-y-juan-carlos/cancion.mp3" type="audio/mpeg">
 </audio>
 <div class="bb-song" id="bb-song" aria-hidden="true"><span>Nuestra canción</span> · L.O.V.E.</div>
-<button class="vinyl-btn" id="music-btn" type="button" aria-label="Reproducir música de la invitación">
-  <div class="vinyl-tonearm">
-    <div class="vinyl-tonearm-pivot"></div>
-    <div class="vinyl-tonearm-line"></div>
-    <div class="vinyl-tonearm-head"></div>
-  </div>
-  <div class="vinyl-spin">
-    <div class="vinyl-disc">
-      <div class="vinyl-sheen"></div>
-      <div class="vinyl-label-text">Y&amp;J<small>2026</small></div>
-      <div class="vinyl-hole"></div>
-    </div>
-  </div>
-  <div class="vinyl-icons">
-    <svg class="vinyl-icon-play" viewBox="0 0 24 24" fill="#0A0F26" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-    <svg class="vinyl-icon-pause" viewBox="0 0 24 24" fill="#0A0F26" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-  </div>
+<button class="vinyl-btn" id="music-btn" type="button" aria-label="Reproducir nuestra canción">
+  <span class="rose-pedestal" aria-hidden="true">
+    <span class="rose-halo"></span>
+    <img class="rose-cloche" src="bb-rosa.webp" alt="" width="520" height="700" decoding="async">
+    <span class="rose-petal p1"></span>
+    <span class="rose-petal p2"></span>
+    <span class="rose-sheen"></span>
+  </span>
+  <span class="rose-state" aria-hidden="true">
+    <svg class="rose-ico-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="rose-ico-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </span>
 </button>
 
 <!-- ENVELOPE OPENING SEQUENCE -->
@@ -1596,9 +1567,8 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none}
         <div class="hair-word"><span>nuestra historia</span></div>
         <h2>Un camino <em>hecho</em> a dos</h2>
         <div class="story-body">
-          <p class="drop-cap" data-reveal="line">Se dice que las mejores historias comienzan sin avisar. La nuestra empezó así — entre risas espontáneas, miradas que se quedaron y conversaciones que no querían terminar.</p>
-          <p data-reveal="line">Aprendimos a caminar al mismo paso, a sostenernos en silencio, a celebrar lo pequeño y a soñar a lo grande. Y un día, casi sin darnos cuenta, supimos que queríamos seguir caminando juntos para siempre.</p>
-          <p data-reveal="line">Hoy, después de mucho compartido, queremos celebrar este momento contigo — porque has sido parte esencial de esta historia y queremos abrir el siguiente capítulo a tu lado.</p>
+          <p class="drop-cap" data-reveal="line">Las mejores historias comienzan sin avisar. La nuestra empezó así, y con el tiempo aprendimos a caminar al mismo paso, a celebrar lo pequeño y a soñar a lo grande.</p>
+          <p data-reveal="line">Hoy queremos abrir el siguiente capítulo a tu lado.</p>
         </div>
         <div class="bb-poses" aria-label="Fotos de Yenisei y Juan Carlos">
           <figure class="bb-pose" style="--r:-7deg"><img src="foto1.jpg" alt="Yenisei y Juan Carlos" decoding="async"></figure>
@@ -1848,15 +1818,11 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none}
       </div>
 
       <div class="dc-avoid-block">
-        <p class="dc-avoid">Por favor evitar estos colores</p>
+        <p class="dc-avoid">El blanco está reservado para la novia</p>
         <div class="dc-swatches">
           <span class="dc-swatch">
             <span class="dc-swatch-dot" style="background:#FFFFFF" aria-label="Blanco"></span>
             <span class="dc-swatch-n">Blanco</span>
-          </span>
-          <span class="dc-swatch">
-            <span class="dc-swatch-dot" style="background:#0000ff" aria-label="Azul"></span>
-            <span class="dc-swatch-n">Azul</span>
           </span>
         </div>
       </div>
@@ -1889,7 +1855,7 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none}
             <span class="m-fog f1" aria-hidden="true"></span>
             <span class="m-spark" id="m-spark" aria-hidden="true"></span>
           </div>
-          <img class="mirror-frame" src="espejo.webp" alt="" width="760" height="1322" decoding="async">
+          <img class="mirror-frame" src="espejo-barroco.webp" alt="" width="900" height="1297" decoding="async">
         </div>
       </div>
 
@@ -3220,8 +3186,10 @@ window.addEventListener('resize',()=>ScrollTrigger.refresh());
   if(!musicBtn) return;
 
   if(musicEl){
-    musicEl.addEventListener('play',  ()=> musicBtn.classList.add('is-playing'));
-    musicEl.addEventListener('pause', ()=> musicBtn.classList.remove('is-playing'));
+    musicEl.addEventListener('play',  ()=>{ musicBtn.classList.add('is-playing');
+      musicBtn.setAttribute('aria-label','Pausar nuestra canción'); });
+    musicEl.addEventListener('pause', ()=>{ musicBtn.classList.remove('is-playing');
+      musicBtn.setAttribute('aria-label','Reproducir nuestra canción'); });
     musicEl.addEventListener('ended', ()=>{
       try{ musicEl.currentTime = 0; }catch(e){}
       musicEl.play().catch(()=>{});
