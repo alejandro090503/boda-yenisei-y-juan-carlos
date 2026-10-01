@@ -1049,79 +1049,89 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 #lightbox-close:hover{background:rgba(15,31,63,.8);border-color:var(--gold-soft);transform:scale(1.08)}
 
 /* ============ MUSIC PLAYER (flotante) — estilo samantha-alexander ============ */
-/* ===== BOTON DE MUSICA — la rosa encantada bajo la campana ===== */
+/* ===== BOTON DE MUSICA — la rosa encantada: solo la campana, sin marco ni fondo ===== */
 .vinyl-btn{
-  position:fixed;bottom:20px;right:20px;z-index:50;
-  width:72px;height:88px;border-radius:40px;padding:0;
-  border:none;cursor:pointer;background:transparent;
+  position:fixed;bottom:14px;right:14px;z-index:50;
+  width:66px;aspect-ratio:294/542;padding:0;margin:0;
+  border:none;cursor:pointer;background:none;border-radius:0;box-shadow:none;
+  -webkit-appearance:none;appearance:none;
   opacity:0;transform:scale(.6);pointer-events:none;
   -webkit-tap-highlight-color:transparent;
-  transition:transform .35s cubic-bezier(.2,.7,.2,1);
+  transition:transform .4s cubic-bezier(.2,.7,.2,1),opacity .4s ease;
 }
 .vinyl-btn.is-ready{opacity:1;transform:scale(1);pointer-events:auto}
-.vinyl-btn:hover{transform:scale(1.07)}
+.vinyl-btn:hover{transform:scale(1.06)}
+.vinyl-btn:active{transform:scale(.97)}
 .vinyl-btn:focus-visible{outline:none}
-.vinyl-btn:focus-visible .rose-pedestal{box-shadow:0 0 0 2px var(--gold),0 8px 20px rgba(0,0,0,.45)}
-.rose-pedestal{
-  position:absolute;inset:0;border-radius:40px;overflow:hidden;
-  background:radial-gradient(120% 90% at 50% 18%,#17174f 0%,#0a0a52 52%,#070736 100%);
-  box-shadow:0 8px 22px rgba(0,0,0,.45),inset 0 0 0 1px rgba(201,162,75,.4);
-}
-.rose-halo{
-  position:absolute;left:50%;top:44%;width:112%;aspect-ratio:1;transform:translate(-50%,-50%);
-  border-radius:50%;pointer-events:none;opacity:.42;
-  background:radial-gradient(circle,rgba(230,203,133,.65) 0%,rgba(201,162,75,.26) 38%,transparent 68%);
-  transition:opacity .5s ease;
-}
-.vinyl-btn.is-playing .rose-halo{opacity:1;animation:roseGlow 2.8s ease-in-out infinite}
-@keyframes roseGlow{0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(.94)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}}
-.rose-cloche{
-  position:absolute;left:50%;top:5px;transform:translateX(-50%);
-  width:56px;height:70px;object-fit:contain;object-position:center top;
-  pointer-events:none;z-index:2;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));
-}
-.vinyl-btn.is-playing .rose-cloche{animation:roseBreath 4.6s ease-in-out infinite}
-@keyframes roseBreath{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.045)}}
-.rose-sheen{
-  position:absolute;inset:0;border-radius:40px;pointer-events:none;z-index:3;
-  background:linear-gradient(128deg,transparent 34%,rgba(255,255,255,.16) 46%,transparent 58%);
-}
-/* petalo que cae solo cuando suena */
-.rose-petal{
-  position:absolute;left:52%;top:34%;width:7px;height:9px;z-index:3;opacity:0;
-  border-radius:60% 0 60% 0;background:linear-gradient(140deg,#d64a4a,#8f1420);
-  box-shadow:0 0 5px rgba(214,74,74,.55);pointer-events:none;
-}
-.vinyl-btn.is-playing .rose-petal{animation:rosePetal 7s ease-in infinite}
-.vinyl-btn.is-playing .rose-petal.p2{animation-delay:3.4s;left:44%;top:30%}
+.rose-jar{position:absolute;inset:0;display:block}
+/* sombra de contacto difusa bajo la base */
+.rose-ground{position:absolute;left:4%;right:4%;bottom:-5%;height:13%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(6,6,40,.42),rgba(6,6,40,.16) 55%,transparent 100%)}
+/* capas recortadas con la silueta real de la campana */
+.rose-in{position:absolute;inset:0;pointer-events:none;overflow:hidden;
+  -webkit-mask:url('bb-rosa.webp') center/100% 100% no-repeat;mask:url('bb-rosa.webp') center/100% 100% no-repeat}
+.rose-in--back{z-index:1}
+.rose-in--front{z-index:3}
+/* resplandor calido que nace dentro del cristal */
+.rose-glow{position:absolute;left:-12%;right:-12%;top:12%;height:66%;opacity:.3;
+  background:radial-gradient(closest-side at 50% 46%,rgba(255,236,186,.95),rgba(236,196,112,.5) 46%,transparent 78%);
+  transition:opacity .8s ease}
+.vinyl-btn.is-playing .rose-glow{opacity:.7;animation:roseGlow 4.2s ease-in-out infinite}
+@keyframes roseGlow{0%,100%{opacity:.5;transform:scale(.94)}50%{opacity:.95;transform:scale(1.06)}}
+.rose-cloche{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;pointer-events:none;
+  filter:drop-shadow(0 5px 6px rgba(6,6,40,.36)) drop-shadow(0 0 1.2px rgba(255,246,222,.85))}
+.vinyl-btn:focus-visible .rose-cloche{
+  filter:drop-shadow(0 0 3px rgba(230,203,133,1)) drop-shadow(0 0 7px rgba(201,162,75,.9))}
+/* la rosa respira: segunda copia recortada solo a la flor */
+.rose-bloom{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;pointer-events:none;
+  -webkit-clip-path:ellipse(21% 11% at 45% 39%);clip-path:ellipse(21% 11% at 45% 39%);
+  transform-origin:45% 42%}
+.vinyl-btn.is-playing .rose-bloom{animation:roseBreath 4.2s ease-in-out infinite}
+@keyframes roseBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+/* reflejo especular que recorre el cristal */
+.rose-sweep{position:absolute;top:-10%;bottom:-10%;left:0;width:46%;opacity:.85;
+  background:linear-gradient(100deg,transparent 0%,rgba(255,255,255,.08) 30%,rgba(255,255,255,.62) 50%,rgba(255,255,255,.08) 70%,transparent 100%);
+  transform:translateX(-140%) skewX(-12deg);animation:roseSweep 7.5s ease-in-out infinite}
+@keyframes roseSweep{0%,58%{transform:translateX(-140%) skewX(-12deg)}86%,100%{transform:translateX(330%) skewX(-12deg)}}
+/* leve refraccion en el borde izquierdo del domo */
+.rose-rim{position:absolute;left:9%;top:20%;width:9%;height:52%;border-radius:50%;opacity:.55;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.75) 30%,rgba(255,255,255,.35) 70%,transparent)}
+/* base: brillo metalico dorado */
+.rose-gild{position:absolute;left:0;right:0;bottom:0;height:17%;opacity:.5;
+  background:linear-gradient(100deg,rgba(140,111,42,.2) 0%,rgba(230,203,133,.95) 34%,rgba(255,244,210,1) 46%,rgba(201,162,75,.85) 60%,rgba(140,111,42,.25) 100%)}
+/* chispas doradas diminutas dentro del cristal */
+.rose-spark{position:absolute;width:2px;height:2px;border-radius:50%;opacity:0;
+  background:#FFF3CF;box-shadow:0 0 3px 1px rgba(255,226,150,.9)}
+.rose-spark.s1{left:27%;top:30%}.rose-spark.s2{left:68%;top:36%}
+.rose-spark.s3{left:58%;top:58%}.rose-spark.s4{left:33%;top:66%}
+.vinyl-btn.is-playing .rose-spark{animation:roseSpark 3.6s ease-in-out infinite}
+.vinyl-btn.is-playing .rose-spark.s2{animation-delay:.9s}
+.vinyl-btn.is-playing .rose-spark.s3{animation-delay:1.8s}
+.vinyl-btn.is-playing .rose-spark.s4{animation-delay:2.7s}
+@keyframes roseSpark{0%,100%{opacity:0;transform:translateY(3px) scale(.4)}40%{opacity:1;transform:translateY(-2px) scale(1.25)}70%{opacity:0;transform:translateY(-6px) scale(.5)}}
+/* petalo que cae de vez en cuando */
+.rose-petal{position:absolute;left:50%;top:42%;width:5px;height:6.5px;opacity:0;
+  border-radius:70% 0 70% 0;background:linear-gradient(140deg,#e06a5c,#a3202a)}
+.vinyl-btn.is-playing .rose-petal{animation:rosePetal 11s ease-in infinite 2s}
 @keyframes rosePetal{
   0%{opacity:0;transform:translate(0,0) rotate(0)}
-  8%{opacity:.95}
-  60%{opacity:.8;transform:translate(-5px,22px) rotate(130deg)}
-  78%{opacity:0;transform:translate(2px,33px) rotate(210deg)}
-  100%{opacity:0;transform:translate(2px,33px) rotate(210deg)}
+  4%{opacity:.95}
+  30%{opacity:.9;transform:translate(-7px,30px) rotate(150deg)}
+  38%{opacity:0;transform:translate(-5px,40px) rotate(215deg)}
+  100%{opacity:0;transform:translate(-5px,40px) rotate(215deg)}
 }
-/* indicador play / pausa */
-.rose-state{
-  position:absolute;right:5px;bottom:5px;width:20px;height:20px;border-radius:50%;z-index:4;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(10,10,82,.9);box-shadow:0 0 0 1px rgba(201,162,75,.65);
-}
-.rose-state svg{width:9px;height:9px;display:block;fill:#E6CB85}
-.rose-state .rose-ico-pause{display:none}
+/* indicador fino, solo trazo dorado sobre la base */
+.rose-state{position:absolute;left:50%;bottom:3.5%;width:11px;height:11px;margin-left:-5.5px;z-index:4;
+  pointer-events:none;filter:drop-shadow(0 0 1.5px rgba(6,6,40,.95))}
+.rose-state svg{width:100%;height:100%;display:block;fill:#F3DFA4}
+.rose-state .rose-ico-pause{display:none;opacity:.8}
 .vinyl-btn.is-playing .rose-state .rose-ico-play{display:none}
 .vinyl-btn.is-playing .rose-state .rose-ico-pause{display:block}
-.vinyl-btn::after{
-  content:"";position:absolute;inset:-4px;border-radius:44px;
-  border:1px solid var(--gold);opacity:.28;pointer-events:none;
-  animation:vinylPulse 3.4s ease-in-out infinite;
-}
-.vinyl-btn.is-playing::after{animation-duration:2.2s}
-@keyframes vinylPulse{0%,100%{transform:scale(1);opacity:.28}50%{transform:scale(1.07);opacity:.05}}
+@media (max-width:480px){ .vinyl-btn{width:58px;bottom:12px;right:10px} }
 @media (prefers-reduced-motion:reduce){
-  .vinyl-btn::after,.vinyl-btn.is-playing .rose-halo,
-  .vinyl-btn.is-playing .rose-cloche,.vinyl-btn.is-playing .rose-petal{animation:none}
-  .rose-petal{opacity:0}
+  .rose-sweep,.vinyl-btn.is-playing .rose-glow,.vinyl-btn.is-playing .rose-bloom,
+  .vinyl-btn.is-playing .rose-spark,.vinyl-btn.is-playing .rose-petal{animation:none}
+  .rose-sweep{opacity:0}
 }
 
 /* ===================== LA BELLA Y LA BESTIA · capa de diseño ===================== */
@@ -1424,16 +1434,23 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none}
 </audio>
 <div class="bb-song" id="bb-song" aria-hidden="true"><span>Nuestra canción</span> · L.O.V.E.</div>
 <button class="vinyl-btn" id="music-btn" type="button" aria-label="Reproducir nuestra canción">
-  <span class="rose-pedestal" aria-hidden="true">
-    <span class="rose-halo"></span>
-    <img class="rose-cloche" src="bb-rosa.webp" alt="" width="520" height="700" decoding="async">
-    <span class="rose-petal p1"></span>
-    <span class="rose-petal p2"></span>
-    <span class="rose-sheen"></span>
-  </span>
-  <span class="rose-state" aria-hidden="true">
-    <svg class="rose-ico-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-    <svg class="rose-ico-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  <span class="rose-jar" aria-hidden="true">
+    <span class="rose-ground"></span>
+    <span class="rose-in rose-in--back"><span class="rose-glow"></span></span>
+    <img class="rose-cloche" src="bb-rosa.webp" alt="" width="294" height="542" decoding="async">
+    <img class="rose-bloom" src="bb-rosa.webp" alt="" width="294" height="542" decoding="async">
+    <span class="rose-in rose-in--front">
+      <span class="rose-gild"></span>
+      <span class="rose-rim"></span>
+      <span class="rose-spark s1"></span><span class="rose-spark s2"></span>
+      <span class="rose-spark s3"></span><span class="rose-spark s4"></span>
+      <span class="rose-petal"></span>
+      <span class="rose-sweep"></span>
+    </span>
+    <span class="rose-state">
+      <svg class="rose-ico-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg>
+      <svg class="rose-ico-pause" viewBox="0 0 24 24"><path d="M6.5 5h3.4v14H6.5zM14.1 5h3.4v14h-3.4z"/></svg>
+    </span>
   </span>
 </button>
 
