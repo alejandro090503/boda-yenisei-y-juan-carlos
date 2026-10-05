@@ -173,7 +173,7 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 .hero-bg{
   position:absolute;inset:0;
   width:100%;height:100%;
-  object-fit:cover;object-position:35% 15%;
+  object-fit:cover;object-position:50% 22%;
   transform:scale(1.0);
   filter:saturate(1.05) contrast(1.08) brightness(.82);
   animation:kenBurns 22s ease-in-out infinite;
@@ -1632,8 +1632,8 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none}
         </div>
         <div class="bb-poses" aria-label="Fotos de Yenisei y Juan Carlos">
           <figure class="bb-pose" style="--r:-7deg"><img src="foto1.jpg" alt="Yenisei y Juan Carlos" decoding="async"></figure>
-          <figure class="bb-pose" style="--r:4deg"><img src="foto2.jpg" alt="Yenisei y Juan Carlos" decoding="async"></figure>
-          <figure class="bb-pose" style="--r:-3deg"><img src="foto3.jpg" alt="Yenisei y Juan Carlos" decoding="async"></figure>
+          <figure class="bb-pose" style="--r:4deg"><img src="foto2.jpg" alt="Yenisei y Juan Carlos" decoding="async" style="object-position:38% 30%"></figure>
+          <figure class="bb-pose" style="--r:-3deg"><img src="foto3.jpg" alt="Yenisei y Juan Carlos" decoding="async" style="object-position:55% 30%"></figure>
         </div>
         <div class="story-initials">Y <span class="amp-serif">&amp;</span> J</div>
       </div>
@@ -1665,24 +1665,24 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none}
         <div class="familia-group">
           <div class="familia-group-title">Padres del novio</div>
           <div class="familia-names">
-            José Maximino Barranco<br>
+            José Maximino Barranco Pérez<br>
             <em>&amp;</em><br>
-            Guadalupe Carrasco
+            Guadalupe Carrasco Mendoza
           </div>
         </div>
         <div class="familia-group">
           <div class="familia-group-title">Padres de la novia</div>
           <div class="familia-names">
-            Silvino Carbajal<br>
+            Silvino Carbajal Baheza<br>
             <em>&amp;</em><br>
-            Elvira Hilda Hernandez
+            Elvira Hilda Hernandez Suarez
           </div>
         </div>
       </div>
 
       <div class="familia-special">
         <div class="familia-special-title">Padrinos</div>
-        <div class="familia-special-name">Oscar Carrasco &amp; Hortencia Rocha Velacion</div>
+        <div class="familia-special-name">Oscar Carrasco Mendoza &amp; Hortensia Rocha Pérez</div>
       </div>
 
     </div>
@@ -1921,7 +1921,7 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none}
 
       <div class="mirror-meter">
         <span class="mirror-dots" id="mirror-dots" aria-hidden="true"></span>
-        <span class="mirror-count" id="mirror-count" aria-live="polite">1 de 6</span>
+        <span class="mirror-count" id="mirror-count" aria-live="polite">1 de 5</span>
       </div>
       <p class="mirror-hint">Toca el espejo o desliza</p>
     </div>
@@ -2611,7 +2611,7 @@ gsap.fromTo('.dc-avoid, .dc-swatch',{opacity:0,scale:.5,y:22},{opacity:1,scale:1
   var wrap = document.getElementById('m-photos');
   if(!hit || !wrap) return;
 
-  var SRC = ['foto1.jpg','foto2.jpg','foto3.jpg','foto4.jpg','foto5.jpg','foto6.jpg'];
+  var SRC = ['foto1.jpg','foto2.jpg','foto3.jpg','foto4.jpg','foto5.jpg'];
   var dotsEl  = document.getElementById('mirror-dots');
   var countEl = document.getElementById('mirror-count');
   var sparkEl = document.getElementById('m-spark');
