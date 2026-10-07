@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="light only">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Yenisei &amp; Juan Carlos · 7 de noviembre de 2026</title>
 <meta name="description" content="Yenisei & Juan Carlos · Nuestra boda · Sábado 7 de noviembre de 2026 · Apizaco, Tlaxcala">
@@ -34,6 +35,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
 :root{
+  color-scheme:light only;
   --bg:#F8FAE9;
   --surface:#EEF3D2;
   --paper:#FFFFFF;
@@ -1467,6 +1469,25 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none}
    Cormorant italica, igual que el del hero. */
 .amp-serif{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:.55em;
   vertical-align:.12em;letter-spacing:0}
+
+/* ===== Itinerario: linea de tiempo compacta ===== */
+.tl{list-style:none;max-width:440px;margin:6px auto 0;padding:0 14px;text-align:left}
+.tl-row{position:relative;display:grid;grid-template-columns:104px 54px 1fr;column-gap:12px;align-items:center;padding:13px 0}
+.tl-row::before{content:'';position:absolute;left:calc(104px + 12px + 27px);top:0;bottom:0;width:1px;
+  background:linear-gradient(to bottom,rgba(201,162,75,.2),rgba(201,162,75,.75) 30%,rgba(201,162,75,.75) 70%,rgba(201,162,75,.2))}
+.tl-row:first-child::before{top:50%}.tl-row:last-child::before{bottom:50%}
+.tl-time{font-family:var(--serif);font-weight:700;font-size:22px;line-height:1;color:var(--bb-royal);text-align:right;white-space:nowrap;font-variant-numeric:lining-nums tabular-nums}
+.tl-time small{font-size:1em;font-weight:700;letter-spacing:.04em;color:var(--gold-deep)}
+.tl-ico{position:relative;z-index:1;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(180deg,#fff,#fbfcf1);border:1px solid rgba(201,162,75,.7);
+  box-shadow:0 0 0 4px rgba(255,255,255,.9),0 0 0 5px rgba(201,162,75,.3),0 8px 18px rgba(10,10,82,.10)}
+.tl-ico img{width:30px;height:30px;display:block}
+.tl-ev{font-family:var(--serif);font-weight:700;font-size:19px;line-height:1.2;color:var(--bb-royal)}
+.tl-sub{font-family:var(--serif);font-style:italic;font-weight:600;font-size:16px;line-height:1.25;color:#3d3d70;margin-top:3px}
+@media (max-width:380px){.tl{padding:0 8px}.tl-row{grid-template-columns:98px 50px 1fr;column-gap:10px}.tl-row::before{left:calc(98px + 10px + 25px)}.tl-ico{width:50px;height:50px}.tl-ev{font-size:18px}}
+/* swatches vestimenta */
+.dc-avoid{text-transform:none;letter-spacing:.02em;font-family:var(--serif);font-size:19px;font-weight:600;font-style:italic;line-height:1.45;max-width:340px;margin:0 auto;padding-left:0;color:var(--ink-soft)}
+.dc-sugerencia{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);margin:-24px 0 30px;padding-left:.28em}
 </style>
 </head>
 <body>
@@ -1810,30 +1831,17 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none}
         <img class="bb-candle bb-candle--l" src="bb-candelabro.webp" alt="" width="300" height="420" decoding="async">
         <img class="bb-candle bb-candle--r" src="bb-candelabro.webp" alt="" width="300" height="420" decoding="async">
       </div>
-      <div class="itv3" id="itin">
-        <div class="itv3-track"></div>
-        <div class="itv3-glow" id="itvGlow"></div>
-
-        <div class="itv3-item">
-          <div class="itv3-gem"></div>
-          <div class="itv3-card">
-            <img class="itv3-ico" src="ico-ceremonia.png" alt="" width="60" height="60">
-            <div class="itv3-time">6:00 <small>pm</small></div>
-            <div class="itv3-ev">Ceremonia Religiosa</div>
-            <div class="itv3-sub">Basílica de Nuestra Señora de la Misericordia</div>
-          </div>
-        </div>
-
-        <div class="itv3-item">
-          <div class="itv3-gem itv3-gem-navy"></div>
-          <div class="itv3-card">
-            <img class="itv3-ico" src="ico-recepcion.png" alt="" width="60" height="60">
-            <div class="itv3-time">7:30 <small>pm</small></div>
-            <div class="itv3-ev">Recepción</div>
-            <div class="itv3-sub">Salón Las Camelinas</div>
-          </div>
-        </div>
-      </div>
+      <ol class="tl" id="itin">
+        <li class="tl-row"><time class="tl-time">6:00 <small>pm</small></time><span class="tl-ico"><img src="ico-ceremonia.png" alt="" width="30" height="30" decoding="async"></span><div class="tl-txt"><div class="tl-ev">Ceremonia religiosa</div><div class="tl-sub">Basílica de Nuestra Señora de la Misericordia</div></div></li>
+        <li class="tl-row"><time class="tl-time">7:30 <small>pm</small></time><span class="tl-ico"><img src="ico-bienvenida.png" alt="" width="30" height="30" decoding="async"></span><div class="tl-txt"><div class="tl-ev">Bienvenida y apertura de salón</div><div class="tl-sub">Salón Las Camelinas</div></div></li>
+        <li class="tl-row"><time class="tl-time">8:00 <small>pm</small></time><span class="tl-ico"><img src="ico-novios.png" alt="" width="30" height="30" decoding="async"></span><div class="tl-txt"><div class="tl-ev">Entrada de los novios</div></div></li>
+        <li class="tl-row"><time class="tl-time">8:05 <small>pm</small></time><span class="tl-ico"><img src="ico-recepcion.png" alt="" width="30" height="30" decoding="async"></span><div class="tl-txt"><div class="tl-ev">Palabras de bienvenida y brindis</div></div></li>
+        <li class="tl-row"><time class="tl-time">8:15 <small>pm</small></time><span class="tl-ico"><img src="ico-pastel.png" alt="" width="30" height="30" decoding="async"></span><div class="tl-txt"><div class="tl-ev">Partida de pastel</div></div></li>
+        <li class="tl-row"><time class="tl-time">8:20 <small>pm</small></time><span class="tl-ico"><img src="ico-banquete.png" alt="" width="30" height="30" decoding="async"></span><div class="tl-txt"><div class="tl-ev">Banquete</div></div></li>
+        <li class="tl-row"><time class="tl-time">9:20 <small>pm</small></time><span class="tl-ico"><img src="ico-vals.png" alt="" width="30" height="30" decoding="async"></span><div class="tl-txt"><div class="tl-ev">Vals de los novios</div></div></li>
+        <li class="tl-row"><time class="tl-time">11:25 <small>pm</small></time><span class="tl-ico"><img src="ico-protocolo.png" alt="" width="30" height="30" decoding="async"></span><div class="tl-txt"><div class="tl-ev">Protocolo de boda</div></div></li>
+        <li class="tl-row"><time class="tl-time">1:00 <small>am</small></time><span class="tl-ico"><img src="ico-tornafiesta.png" alt="" width="30" height="30" decoding="async"></span><div class="tl-txt"><div class="tl-ev">Tornafiesta</div></div></li>
+      </ol>
     </div>
   </section>
 
@@ -1860,6 +1868,7 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none}
       </div>
 
       <p class="dc-note">Acompáñanos vestido para la ocasión</p>
+      <p class="dc-sugerencia">Es solo una sugerencia</p>
 
       <div class="dc-figures">
         <div class="dc-fig">
@@ -1878,11 +1887,15 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none}
       </div>
 
       <div class="dc-avoid-block">
-        <p class="dc-avoid">El blanco está reservado para la novia</p>
+        <p class="dc-avoid">El blanco está reservado para la novia y te pedimos evitar el color rojo.</p>
         <div class="dc-swatches">
           <span class="dc-swatch">
             <span class="dc-swatch-dot" style="background:#FFFFFF" aria-label="Blanco"></span>
             <span class="dc-swatch-n">Blanco</span>
+          </span>
+          <span class="dc-swatch">
+            <span class="dc-swatch-dot" style="background:#FF0000" aria-label="Rojo"></span>
+            <span class="dc-swatch-n">Rojo</span>
           </span>
         </div>
       </div>
@@ -2540,52 +2553,14 @@ if(!('ontouchstart' in window)){
 })();
 gsap.fromTo('.cd-flower',{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:1.05,stagger:.12,ease:'power3.out',immediateRender:false,scrollTrigger:{trigger:'.countdown-grid',start:'top 86%'}});
 gsap.fromTo('.countdown .eyebrow, .countdown h2, .countdown-sub',{opacity:0,y:14},{opacity:1,y:0,duration:.9,stagger:.1,immediateRender:false,scrollTrigger:{trigger:'.countdown',start:'top 78%'}});
-// ------ ITINERARIO estilo cristal-humberto (itv3) ------
-(function initItv3(){
-  var glow = document.getElementById('itvGlow');
-  var section = document.querySelector('.itinerary');
-  var items = document.querySelectorAll('.itv3-item');
-  if(!glow || !section || !items.length) return;
-
-  ScrollTrigger.create({
-    trigger: section,
-    start: 'top 58%',
-    end: 'bottom 42%',
-    scrub: 1.8,
-    onUpdate: function(self){
-      var track = section.querySelector('.itv3-track');
-      if(!track) return;
-      var h = track.offsetHeight - 55;
-      glow.style.top = (self.progress * h) + 'px';
-    }
+// ------ ITINERARIO: linea de tiempo compacta ------
+(function initTl(){
+  var rows=document.querySelectorAll('.tl-row');
+  rows.forEach(function(r,i){
+    gsap.fromTo(r,{y:14,opacity:0},{y:0,opacity:1,duration:.7,ease:'power2.out',immediateRender:false,
+      scrollTrigger:{trigger:r,start:'top 94%',once:true}});
   });
-
-  items.forEach(function(item){
-    var gem    = item.querySelector('.itv3-gem');
-    var isNavy = gem && gem.classList.contains('itv3-gem-navy');
-    var gc     = isNavy ? '93,124,181' : '230,203,133';
-
-    if(gem){
-      gsap.fromTo(gem,
-        {scale:0, opacity:0},
-        {scale:1, opacity:1, duration:0.6, ease:'back.out(2.8)',
-         scrollTrigger:{trigger:item, start:'top 86%', once:true},
-         onComplete:function(){
-           gsap.timeline()
-             .to(gem,{scale:1.4, filter:'drop-shadow(0 0 20px rgba('+gc+',1))',   duration:0.3, ease:'power2.out'})
-             .to(gem,{scale:1,   filter:'drop-shadow(0 0 5px rgba('+gc+',0.35))', duration:0.28,ease:'power2.in'})
-             .to(gem,{scale:1.2, filter:'drop-shadow(0 0 14px rgba('+gc+',0.8))', duration:0.22,ease:'power2.out'})
-             .to(gem,{scale:1,   filter:'drop-shadow(0 0 4px rgba('+gc+',0.25))', duration:0.32,ease:'power2.in'});
-         }
-        });
-    }
-
-    var els = [item.querySelector('.itv3-time'), item.querySelector('.itv3-ev'), item.querySelector('.itv3-sub')].filter(Boolean);
-    gsap.fromTo(els,
-      {y:14, opacity:0},
-      {y:0, opacity:1, duration:0.8, ease:'power2.out', stagger:0.08,
-       scrollTrigger:{trigger:item, start:'top 86%', once:true}});
-  });
+  setTimeout(function(){rows.forEach(function(r){ if(parseFloat(getComputedStyle(r).opacity)===0){var y=r.getBoundingClientRect().top; if(y<innerHeight*1.2){gsap.to(r,{opacity:1,y:0,duration:.5});}}});},4000);
 })();
 
 // ------ DRESS ------
