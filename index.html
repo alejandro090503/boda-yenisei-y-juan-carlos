@@ -2196,7 +2196,7 @@ body.gift-locked{overflow:hidden;overscroll-behavior:none}
       </div>
 
       <p id="rsvp-feedback"></p>
-      <div class="rsvp-date">Fecha límite · Sábado 24 Octubre 2026</div>
+      <div class="rsvp-date">Fecha límite · Miércoles 4 Noviembre 2026</div>
       <p class="bb-note bb-note--pases"><span class="bb-note-orn" aria-hidden="true">✦</span>Es indispensable presentar sus pases el día del evento.</p>
     </div>
   </section>
@@ -3069,7 +3069,7 @@ if(rsvpBtn && !('ontouchstart' in window)){
 function initRSVP(){
   var PANEL_API = 'https://panel-invitados.vercel.app/api/confirmar';
   var RSVP_URL  = 'https://boda-yenisei-y-juan-carlos.vercel.app';
-  var DEADLINE  = new Date(Date.UTC(2026, 9, 25, 6, 0, 0) - 1); /* cierra al terminar el sáb 24 oct 2026, 23:59:59 hora de México (UTC-6) */
+  var DEADLINE  = new Date(Date.UTC(2026, 10, 5, 6, 0, 0) - 1); /* cierra al terminar el mié 4 nov 2026, 23:59:59 hora de México (UTC-6) */
   var frozen    = Date.now() > DEADLINE.getTime();
   var ROJO      = '#b51a00';
 
